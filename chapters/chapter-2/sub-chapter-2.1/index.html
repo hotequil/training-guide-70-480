@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Introducing HTML5</title>
+        <style>
+            #border{
+                border: 1px solid #000;
+            }
+
+            .blue{
+                color: #00f;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- my comment! -->
+        <div>
+            <p id="border" class="blue">hello world</p>
+        </div>
+        <div>
+            <input type="text" disabled value="hi">
+        </div>
+        <div>
+            <input type="text" readonly value="hi">
+        </div>
+        <div>
+            <input type="checkbox" checked>
+        </div>
+        <div>
+            <select name="select" id="select" tabindex="1">
+                <!--<option value="" disabled selected>select anything</option>-->
+                <option value="value1">value1</option>
+                <option value="value2" selected>value2</option>
+                <option value="value3">value3</option>
+            </select>
+        </div>
+        <div>
+            <button type="button" disabled>i'm disabled :)</button>
+        </div>
+        <div>
+            <p lang="pt-br">meu nome é joão</p>
+        </div>
+        <div>
+           <button type="button" accesskey="j">press <kbd>ALT</kbd> + <kbd>j</kbd> to focus</button>
+        </div>
+        <div>
+            <p contenteditable="true" title="click here!">your name is...</p>
+        </div>
+        <div>
+            <p dir="rtl">hello!</p>
+        </div>
+        <div>
+            <p hidden>communism</p>
+        </div>
+        <div>
+            <p contenteditable="true" spellcheck="true">i'm dontknow anything (click here)</p>
+            <p contenteditable="true" spellcheck="false">i'm dontknow anything (click here)</p>
+        </div>
+        <div>
+            <p>first line<br />second line<hr/>third line</p>
+        </div>
+        <div>
+            <table>
+                <colgroup>
+                    <col span="1" style="background-color: red">
+                    <col span="1" style="background-color: green">
+                    <col span="1" style="background-color: blue">
+                </colgroup>
+                <tr>
+                    <th>red</th>
+                    <th>green</th>
+                    <th>blue</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+           <p data-myFavoriteNmer="3217">favorite number</p>
+        </div>
+        <div>
+            <p>&amp; &#38; &</p>
+            <p>&lt;joao/&gt;</p>
+            <p>h&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;l&nbsp;&nbsp;&nbsp;l&nbsp;&nbsp;&nbsp;o</p>
+        </div>
+        <footer>
+            <p>&copy; hotequil 2020</p>
+        </footer>
+    </body>
+</html>
