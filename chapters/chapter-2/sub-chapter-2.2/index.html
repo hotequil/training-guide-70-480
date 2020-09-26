@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Embedding content</title>
+        <style>
+            header{
+                background-color: rgba(127, 58, 195, 0.375);
+
+            }
+
+            main{
+                background-color: rgba(190, 195, 58, 0.375);
+                min-height: 100vh;
+            }
+
+            footer{
+                background-color: rgba(58, 195, 163, 0.375);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <iframe sandbox="allow-same-origin" src="./_header.html"></iframe>
+            <a href="#article">go to article</a>
+        </header>
+        <main>
+           <div>
+               <iframe name="myIframe"></iframe>
+               <iframe sandbox="allow-same-origin allow-forms allow-scripts" width="560" height="315" src="https://www.youtube.com/embed/csAWMMzgzzI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           </div>
+            <div>
+                <a href="https://github.com/hotequil" target="_blank">my github with target blank</a>
+                <a href="https://github.com/hotequil" target="_self">my github with target self</a>
+                <a href="https://www.youtube.com/embed/p9n9gW1wCks" target="myIframe">iframe create</a>
+                <a href="mailto:first@person.test?subject=hello!&body=call me.&bcc=second@person.test&&cc=third@person.test">
+                    mailto
+                </a>
+            </div>
+            <div>
+                <img src="./mad-season.png" alt="Mad Season band of rock" usemap="#countries">
+            </div>
+            <div>
+                <article id="article">my article</article>
+            </div>
+            <map name="countries">
+                <area shape="rect" coords="0,0,300,1000" href="#" title="Barrett Martin" alt="Barrett Martin" />
+                <area shape="rect" coords="301,0,600,1000" href="#" title="Layne Staley" alt="Layne Staley" />
+                <area shape="circle" coords="750,100,300" href="#" title="John Baker Saunders" alt="John Baker Saunders"/>
+                <area shape="poly" coords="800,0,1600,0,1600,1600,0,1600" href="#" title="Mike McCready" alt="Mike McCready" />
+                <area shape="default" href="#" alt="Mad Season" title="Mad Season" />
+            </map>
+        </main>
+        <footer>
+            <p>&copy; hotequil 2020</p>
+        </footer>
+    </body>
+</html>
