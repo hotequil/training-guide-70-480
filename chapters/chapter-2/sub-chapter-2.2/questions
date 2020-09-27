@@ -1,23 +1,11 @@
-1. You want to create an expando attribute on several <h3> tags that display vehicles for sale. The expando attribute will store the VIN (vehicle identification number) of the vehicle for sale. Which of the following is the most appropriate example of creating the expando attribute?
-A. <h3 vin=’current VIN here’>1965 VW Beetle</h3>
-B. <h3 id=’current VIN here’>1965 VW Beetle</h3>
-C. <h3 data-vin=’current VIN here’>1965 VW Beetle</h3> X
-D. <h3 datavin=’current VIN here’>1965 VW Beetle</h3>
+1. You want to embed a Flash file called myFlash.swf in your HTML document. Which is the most appropriate code?
+A. <a href=”myFlash.swf” ></a>
+B. <iframe src=”myFlash.swf” ></iframe>
+C. <img src=”myFlash.swf” />
+D. <embed src=”myFlash.swf” ></embed> X
 
-2. Which technology is HTML5 preceded by and derived from?
-A. HTML 4.01 X
-B. SGML
-C. XHTML 1.0
-D. XML
-
-3. How should you start each HTML5 document?
-A. <html>
-B. <head>
-C. <title>
-D. <!DOCTYPE html> X
-
-4. You want to use the disabled Boolean attribute on a text box. How can you accomplish this? (Choose all that apply.)
-A. <input name=’firstName’ type=’text’ disabled /> X
-B. <input name=’firstName’ type=’text’ disabled=’’ /> X
-C. <input name=’firstName’ type=’text’ disabled=’true’ /> X
-D. <input name=’firstName’ type=’text’ disabled=’disabled’ /> X
+2. You want to create a drawing of a machine that Contoso, Ltd., will be selling on its website. The drawing will be embedded in your HTML document, and you want it to maintain its quality when resized. Which is the most appropriate file type to use?
+A. SVG X
+B. GIF
+C. JPG
+D. PNG
