@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Introducing JavaScript</title>
+        <script>
+            var num10 = 10;
+            let num20 = 20;
+            const num30 = 30;
+            const calc = "5 + 2 * 10";
+            const flag = true;
+            const addition = (num10 + num20 + num30) * 5;
+
+            const test = "test";
+            const TeSt = "TeSt";
+            const Test = "Test";
+            const TEST = "TEST";
+            console.log(test, TeSt, Test, TEST);
+
+            let myName;
+            console.log(myName);
+            myName = "joao";
+            console.log(myName);
+
+            console.log(addition);
+            console.log(`${num10} > ${num20} = ${num10 > num20}`);
+            console.log(`${num10} < ${num20} = ${num10 < num20}`);
+            console.log(`${num10} >= ${num30} = ${num10 >= num30}`);
+            console.log(`${num20} == ${num30} = ${num20 == num30}`);
+            console.log(`${num10} != ${num20} = ${num10 != num20}`);
+            console.log(num10 + " + " + num20 + " = " + (num10 + num20));
+            console.log(`${calc} = ${eval(calc)}`);
+            console.log(`typeof ${calc} = ${typeof(calc)}`);
+            console.log(`typeof ${flag} = ${typeof(flag)}`);
+            console.log(`25 % 7 = ${25 % 7}`);
+            console.log(`${num10} != ${num20} && ${num20} != ${num30} = ${num10 != num20 && num20 != num30}`);
+            console.log(`${num10} == ${num20} && ${num20} == ${num30} = ${num10 == num20 && num20 == num30}`);
+            console.log(`${num10} == ${num20} || ${num20} != ${num30} = ${num10 == num20 || num20 != num30}`);
+            console.log(`${num10} == ${num20} || ${num20} == ${num30} = ${num10 == num20 || num20 == num30}`);
+
+            //function declaration
+            // function sumAll(...numbers){
+            //     return numbers.reduce((acc, cur) => acc + cur, 0);
+            // };
+
+            //function expression
+            const sumAll = (...numbers) => numbers.reduce((acc, cur) => acc + cur, 0);
+
+            console.log(sumAll(1,2,3,4,5,6,7,8,9,10));
+
+            alert("welcome!");
+            const usersName = prompt("put your name", "joao");
+            const didTheUserAgree = confirm("do you agree?");
+            console.log(usersName);
+            console.log(didTheUserAgree);
+
+            prompt = message => alert(`i'm not a prompt hahaha!!! your message is: ${message}`);
+            prompt("put your favorite color");
+
+            (() => {
+                num0 = 0;
+                var num1 = 1;
+                let num2 = 2;
+                const num3 = 3;
+
+                if(num1 < num2){
+                    num4 = 4; //is a variable with global scope
+                    var num5 = 5; //is a variable with function scope
+                    let num6 = 6; //is a variable with block scope
+                    const num7 = 7; //is a variable with block scope
+
+                    console.log(num0, num1, num2, num3, num4, num5, num6, num7);
+                };
+
+                //it return error because num6 and num7 there are only into the condition above
+                try{
+                    console.log(num0, num1, num2, num3, num4, num5, num6, num7);
+                }catch(error){
+                    console.log(`${error.name}: ${error.message}`);
+                } finally{
+                    console.log(num0, num1, num2, num3, num4, num5); //without num6, num7
+                }
+            })();
+
+            function helloWithYourName(name){
+                return `${putHello()} ${name}`;
+
+                //only function declaration can be called before the your declaration
+                function putHello(){
+                    return "hello"
+                };
+            };
+
+            console.log(helloWithYourName("joaooooo"));
+
+            const myAge = "18";
+            console.log(`in next year i'm going to be ${myAge + 1} years old!`)
+            console.log(`in next year i'm going to be ${Number(myAge) + 1} years old!`);
+
+            const dayOfBirth = 28,
+                  monthOfBirth = 6,
+                  yearOfBirth = 2002;
+            console.log(`i was born in ${dayOfBirth + monthOfBirth + yearOfBirth}`);
+            console.log(`i was born in ${String(dayOfBirth) + String(monthOfBirth) + String(yearOfBirth)}`);
+
+            const areYouOfLegalAge = age => {
+                const convertAge = Number(age) || NaN;
+                const legalAge = 18;
+                const messages = {
+                    is: "you're in legal age",
+                    isNot: "you aren't in legal age",
+                    errorAge: "it's not an age"
+                };
+
+                if(isNaN(convertAge)){
+                    return messages.errorAge;
+                } else if(convertAge >= legalAge){
+                    return messages.is;
+                } else{
+                    return messages.isNot;
+                };
+            };
+
+            console.log(areYouOfLegalAge(14));
+            console.log(areYouOfLegalAge(18));
+            console.log(areYouOfLegalAge(22));
+            console.log(areYouOfLegalAge("test"));
+            console.log(areYouOfLegalAge([]));
+            console.log(areYouOfLegalAge({}));
+            console.log(areYouOfLegalAge("18"));
+
+            const returnYourFavoriteColor = color => {
+                finalMessage = "";
+
+                switch(color){
+                    case "blue":
+                        finalMessage = `your favorite color is ${color} like me!`;
+                        break;
+                    case "black":
+                        finalMessage = `your favorite color is ${color} like me!`;
+                        break;
+                    case "white":
+                        finalMessage = `your favorite color is ${color} like me!`;
+                        break;
+                    default:
+                        finalMessage = "your favorite color isn't here :(";
+                };
+
+                //or
+                // switch(true){
+                //     case(color == "blue"):
+                //         finalMessage = `your favorite color is ${color} like me!`;
+                //         break;
+                //     case(color == "black"):
+                //         finalMessage = `your favorite color is ${color} like me!`;
+                //         break;
+                //     case(color == "white"):
+                //         finalMessage = `your favorite color is ${color} like me!`;
+                //         break;
+                //     default:
+                //         finalMessage = "your favorite color isn't here :(";
+                // };
+
+                return finalMessage;
+            };
+
+            console.log(returnYourFavoriteColor("blue"));
+            console.log(returnYourFavoriteColor("pink"));
+
+            // can't be 0, NaN, empty string, null or undefined
+            const hasValue = expression => expression ? "there is value!" : "there is no value!";
+
+            console.log(hasValue(20));
+            console.log(hasValue(0));
+            console.log(hasValue(undefined));
+
+            const welcomeUser = name => `welcome, ${name || "pretty user"}!`;
+            console.log(welcomeUser());
+            console.log(welcomeUser("joao"));
+
+            //compare equal values
+            console.log("null == undefined = " + (null == undefined));
+            console.log("false == 0 = " + (false == 0));
+            console.log("\"\" == 0 = " + ('' == 0));
+            console.log("\"123\" == 123 = " + ("123" == 123));
+            console.log("\"joao\" == \"joao\" = " + ("joao" == "joao"));
+
+            //compare equal values and equal types
+            console.log("null === undefined = " + (null === undefined));
+            console.log("false === 0 = " + (false === 0));
+            console.log("\"\" === 0 = " + ('' === 0));
+            console.log("\"123\" === 123 = " + ("123" === 123));
+            console.log("\"joao\" === \"joao\" = " + ("joao" === "joao"));
+
+            //while execute only if it passes the condition. executes zero to many times
+            let index = 10;
+            while(index >= 0){
+                console.log(`i'm in a while loop, index: ${index}`);
+                index--;
+            };
+
+            //do while execute at least one time. executes one to many times
+            let index2 = 0;
+            do{
+                console.log(`i'm in a do while loop, index: ${index2}`);
+                ++index2;
+            } while(index2 > 10);
+
+            const listOfFruits = ["banana", "pineapple", "blueberry"]
+            for(let indexFor = 0; indexFor < listOfFruits.length; indexFor++){
+                if(listOfFruits[indexFor] != "pineapple"){
+                    console.log(listOfFruits[indexFor]);
+                } else{
+                    console.log("break in pineapple");
+                    break; // to leave the loop
+                };
+            };
+        </script>
+    </head>
+    <body>
+        <h1>see the developer tools :)</h1>
+    </body>
+</html>

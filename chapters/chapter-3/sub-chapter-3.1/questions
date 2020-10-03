@@ -1,0 +1,19 @@
+1. Your application prompts the user to enter his or her age, which is placed in an age variable. A user ran the application and entered I Don’t Know for the age. The application then multiplies age by two. What is the result?
+A. undefined
+B. null
+C. NaN X
+D. infinity
+
+2. Which of the following represent valid variable declarations? (Choose all that apply.)
+A. var switch;
+B. var myChar; X
+C. var $cost; X
+D. var _total; X
+E. var 1to1;
+F. var tooGood4u; X
+
+3. In your application, you want to display a personalized message to the user, if the user’s name is populated, in the userName variable, but if userName is empty, you want to use Valued User instead. How can you accomplish this most efficiently?
+A. var personalized = ‘Hello ‘ + (userName ?? ‘Valued User’);
+B. var personalized = ‘Hello ‘ + (userName || ‘Valued User’); X
+C. var personalized = ‘Hello ‘ + (userName && ‘Valued User’);
+D. var personalized = ‘Hello ‘ + (userName + ‘Valued User’);
