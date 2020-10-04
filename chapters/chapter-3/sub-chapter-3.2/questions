@@ -1,0 +1,17 @@
+1. You are creating a new Windows 8 application, and you want to set up TDD for your JavaScript code. Which testing framework will you use?
+A. QUnit
+B. QUnit-Metro X
+C. Microsoft Test
+D. NUnit
+
+2. What are the steps for TDD?
+A. Write the passing test, write the code, run the test again to validate that it still passes.
+B. Write the failing test, write the code, run the test again to validate that it passes. X
+C. Write the code, write the test to validate that it passes, run the test again to validate that it still passes.
+D. Write the passing test, write the code, break the code, run the test again to validate that it fails.
+
+3. Where should your JavaScript code be placed?
+A. In the <head> element of your HTML document.
+B. Just before the </body> tag.
+C. You should always place your JavaScript code in separate files, external to your HTML document. X
+D. Inside the <body> element, at the top.
