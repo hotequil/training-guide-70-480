@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Working with objects</title>
         <link rel="stylesheet" href="./calculator.css">
+        <link rel="stylesheet" href="./node_modules/qunit/qunit/qunit.css">
     </head>
     <body>
         <h1 id="principal-element">see the developer tools :)</h1>
@@ -52,7 +53,16 @@
                 <button data-operation="/">/</button>
             </div>
         </div>
+        <h1 id="qunit-header">QUnit example</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+        <div id="qunit-fixture">test markup, will be hidden</div>
+        <noscript>Enable the JavaScript in your browser for use this page, please</noscript>
         <script src="./calculator.js"></script>
+        <script src="./node_modules/qunit/qunit/qunit.js"></script>
+        <script src="./test.js"></script>
         <script>
             console.log("Arrays");
 
