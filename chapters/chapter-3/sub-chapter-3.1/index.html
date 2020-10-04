@@ -82,6 +82,14 @@
                 }
             })();
 
+            try{
+                console.log(num0, num1, num2, num3, num4, num5, num6, num7);
+            }catch(error){
+                console.log(`${error.name}: ${error.message}`);
+            } finally{
+                console.log(num0, num4); //without num1, num2, num3, num5, num6, num7
+            };
+
             function helloWithYourName(name){
                 return `${putHello()} ${name}`;
 
