@@ -1,0 +1,11 @@
+1. You have two arrays of strings, customers and employees, and you want to combine them to create a contacts array. Which method would be most suitable for this task?
+A. concat X
+B. join
+C. push
+D. splice
+
+2. You want to obtain a list of all elements whose tag name is div, and you need to retrieve this list as quickly as possible. Which function is most appropriate for this task?
+A. getElementsByName
+B. querySelectorAll
+C. getElementsByTagName X
+D. getElementsByClass

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Working with objects</title>
+    </head>
+    <body>
+        <h1 id="principal-element">see the developer tools :)</h1>
+        <p>welcome here!</p>
+        <p>Manipulation the DOM</p>
+        <div data-container-buttons>
+            <button name="action-button" type="button">Button - 1</button>
+            <button data-click-me name="action-button" type="button">Button - 2 (click me to change my color)</button>
+            <button data-remove-event type="button">Button - 3 (click me to remove event of change bg-color in button 2)</button>
+        </div>
+        <ul id="list">
+            <li class="first-or-last">Item - 1</li>
+            <li>Item - 2</li>
+            <li>Item - 3</li>
+            <li class="first-or-last">Item - 4</li>
+        </ul>
+        <address data-my-home>
+            <h4>my city</h4>
+            <p>street test...</p>
+        </address>
+        <a onclick="clickInAnAnchor(event)" href="https://github.com/hotequil" target="_blank">my github</a>
+        <div>
+            <input type="text" data-input>
+            <p data-input-result></p>
+        </div>
+        <video src="./alice-in-chains-nutshell-from-mtv-unplugged-official-video.mp4" controls></video>
+        <script>
+            console.log("Arrays");
+
+            const numbers = [312, 653, 234, 673, 2, 8, 9, 2453, 245, 6, 7, 9, 3425432, 44422, 421, 2, 65, 8, 5, 43, 0, 76, 4, 0, 5, 55, 7665, 1, 1, 1, 2, 4, 9, 6436 ,34, 4];
+
+            const cryptocurrencies = ["bitcoin", "nano", "ethereum"];
+            const ethereum = cryptocurrencies[2];
+
+            //or
+            const people = new Array("jack", "mark", "clark");
+            const mark = people[1];
+
+            console.log(cryptocurrencies, people);
+            console.log(ethereum, mark);
+
+            people[0] = "joao";
+            people[1] = "tim maia";
+            people[2] = "belchior";
+
+            console.log(people);
+
+            for(let index = 0; index < people.length; index++) console.log(cryptocurrencies[index], people[index]);
+
+            console.log(cryptocurrencies.concat(people, [1, 2, 3, 4, 5]));
+            console.log(`find the position of ethereum: ${cryptocurrencies.indexOf("ethereum")}`);
+            console.log(`is there ethereum in my array of cryptocurrencies: ${cryptocurrencies.includes("ethereum")}`);
+            console.log(people.join("   ~[|-_-|]~   "));
+            console.log(`find 9 in last position: ${numbers.lastIndexOf(9)}`);
+            console.log("remove last number in my array with pop and return the item removed", numbers.pop());
+            console.log("add one number in my array and returns the length of array", numbers.push(90909090));
+            console.log("my array:", numbers);
+            console.log("my array with reverse:", numbers.reverse());
+            console.log("my array is reverse because it was modified:", numbers);
+            console.log("remove the first item and returns it:", numbers.shift());
+            console.log("return a new list with index from and index to:", numbers.slice(2, 12));
+            console.log("my array ordered with growing and modified it:", numbers.sort((a, b) => a > b ? 1 : -1));
+            console.log("my array ordered with decreasing and modified it:", numbers.sort((a, b) => a < b ? 1 : -1));
+            console.log("my array ordered:", numbers);
+            console.log("splice remove and add from index in first param, em second param is quantity of itens to remove and thrid or more is the items to add, and it returns the items removed:", numbers.splice(4, 2, 55, 66, 77), "array updated:", numbers);
+            console.log("toString returns the array is joined with comma:", numbers.toString());
+            console.log("unshift add one or more new items in begin of array and returns the length of array:", numbers.unshift(1, 2, 3), numbers);
+            console.log("valueOf returns the primitive value of array:", numbers.valueOf());
+
+            console.log("------------------------------------------------------------------------------------");
+
+            console.log("Manipulation the DOM");
+
+            const title = document.getElementById("principal-element");
+            const paragraphs = document.getElementsByTagName("p");
+            const buttons= document.getElementsByName("action-button");
+            const firstAndLastItemsInList = document.getElementsByClassName("first-or-last");
+            const myAddress = document.querySelector("[data-my-home]");
+            const allButtons = document.querySelectorAll("button");
+            const paragraphsInW3 = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "p");
+
+            console.log(title, paragraphs, buttons, firstAndLastItemsInList, myAddress, allButtons, paragraphsInW3);
+
+            (() => {
+                const itemsOne = document.querySelectorAll("li"); //elements static
+                const itemsTwo = document.getElementsByTagName("li"); //elements active
+
+                console.log(itemsOne, itemsTwo);
+
+                const ul = document.querySelector("#list");
+
+                const li = document.createElement("li");
+                li.textContent = "new item :)";
+
+                ul.appendChild(li);
+
+                console.log(itemsOne, itemsTwo);
+            })();
+
+            const buttonClickMe = document.querySelector("[data-click-me]");
+            const buttonRemoveEvent = document.querySelector("[data-remove-event]");
+
+            const randomNumberColor = () => (Math.random() * 255).toFixed(0);
+
+            const changeColorButton = function(){
+                this.style.backgroundColor = `rgb(${randomNumberColor()}, ${randomNumberColor()}, ${randomNumberColor()})`;
+            };
+
+            const changePadding = function(){
+                const randomNumberPadding = () => (Math.random() * 10).toFixed(0);
+                this.style.padding = `${randomNumberPadding()}px ${randomNumberPadding()}px ${randomNumberPadding()}px ${randomNumberPadding()}px`;
+            }
+
+            buttonClickMe.addEventListener("click", changeColorButton, false);
+            buttonClickMe.addEventListener("click", changePadding, false);
+            buttonClickMe.onclick = function(event){
+                this.style.color = `rgb(${randomNumberColor()}, ${randomNumberColor()}, ${randomNumberColor()})`;
+            }
+
+            const div = document.querySelector("[data-container-buttons]");
+            div.addEventListener("click", function(){
+                this.style.backgroundColor = `rgb(${randomNumberColor()}, ${randomNumberColor()}, ${randomNumberColor()})`;
+            }, false); //if true it will take the child event when it is clicked and use capturing to be executed
+
+            buttonRemoveEvent.addEventListener("click", (event) => {
+                event.stopPropagation(); //stop bubbling event
+
+                buttonClickMe.removeEventListener("click", changeColorButton)
+            }, false);
+
+            const clickInAnAnchor = event => {
+                event.preventDefault();
+
+                alert("haha, i prevented the event ;)");
+            };
+
+            document.querySelector("[data-input]").addEventListener("input", function(){
+                document.querySelector("[data-input-result]").textContent = this.value;
+            });
+
+            document.querySelector("video").addEventListener("play", () => alert("yehhh, alice in chains now!!!!"));
+        </script>
+    </body>
+</html>
