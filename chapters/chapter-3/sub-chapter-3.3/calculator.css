@@ -1,0 +1,49 @@
+:root{
+    --border: 1px solid #000;
+    --size: 50px;
+}
+
+.calculator{
+    display: flex;
+    flex-direction: column;
+    border: var(--border);
+    width: fit-content;
+    padding: 1rem;
+    box-shadow: 1px 1px 4px 4px rgba(0,0,0,0.2);
+}
+
+.calculator__calculate, .calculator__result{
+    padding: .25rem;
+    height: calc(var(--size) / 1.5);
+    border: var(--border);
+    margin-bottom: 1rem;
+}
+
+.calculator > div:last-child{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: .25rem;
+}
+
+.calculator button{
+    border: var(--border);
+    min-width: var(--size);
+    width: 100%;
+    margin: 0 auto;
+    height: var(--size);
+}
+
+.calculator .calculator__reset{
+    grid-column: 1 / 3;
+    width: 100%;
+}
+
+.calculator .calculator__equal{
+    grid-column: 3 / 5;
+    width: 100%;
+}
+
+.calculator .calculator__zero{
+    grid-column: 1 / 4;
+    width: 100%;
+}

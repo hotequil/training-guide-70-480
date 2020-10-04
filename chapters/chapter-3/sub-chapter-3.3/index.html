@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Working with objects</title>
+        <link rel="stylesheet" href="./calculator.css">
     </head>
     <body>
         <h1 id="principal-element">see the developer tools :)</h1>
@@ -29,6 +30,29 @@
             <p data-input-result></p>
         </div>
         <video src="./alice-in-chains-nutshell-from-mtv-unplugged-official-video.mp4" controls></video>
+        <div class="calculator">
+            <div class="calculator__calculate" data-calculate></div>
+            <div class="calculator__result" data-result></div>
+            <div>
+                <button data-reset class="calculator__reset">C</button>
+                <button data-equal class="calculator__equal">=</button>
+                <button data-number="7">7</button>
+                <button data-number="8">8</button>
+                <button data-number="9">9</button>
+                <button data-operation="+">+</button>
+                <button data-number="6">6</button>
+                <button data-number="5">5</button>
+                <button data-number="4">4</button>
+                <button data-operation="-">-</button>
+                <button data-number="3">3</button>
+                <button data-number="2">2</button>
+                <button data-number="1">1</button>
+                <button data-operation="*">*</button>
+                <button data-number="0" class="calculator__zero">0</button>
+                <button data-operation="/">/</button>
+            </div>
+        </div>
+        <script src="./calculator.js"></script>
         <script>
             console.log("Arrays");
 
