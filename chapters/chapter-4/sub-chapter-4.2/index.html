@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Understanding selectors, specificity, and cascading</title>
+        <style>
+            :root{
+                --border-size-type: 8px solid;
+            }
+
+            html, body, div, a, article, .container{
+                background-color: #fff;
+            }
+
+            *{
+                background-color: coral;
+            }
+
+            h1{
+                background-color: rgba(255, 255, 0, 0.75);
+            }
+
+            #subtitle{
+                background-color: #ffdd99;
+            }
+
+            .text{
+                background-color: #60bdff;
+            }
+
+            p:not(.subtext){
+                background-color: #b22222 !important;
+            }
+
+            .box a{
+                text-decoration: none;
+                background-color: cadetblue;
+                font-size: 2rem;
+                color: #fff;
+            }
+
+            .container .box > a{
+                background-color: #00ffe1;
+            }
+
+            article{
+                font-size: 1.75rem;
+            }
+
+            article:lang(en){
+                color: #ff0008;
+            }
+
+            article:lang(pt-br){
+                color: #00008b;
+            }
+
+            a:hover{
+                border: var(--border-size-type) #77ff00;
+            }
+
+            a:focus{
+                border: var(--border-size-type) #ff0000;
+            }
+
+            a:active{
+                border: var(--border-size-type) #0055ff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>hello</h1>
+            <h2 id="subtitle">world</h2>
+            <h3>and</h3>
+            <h4 class="text">relatives or friends</h4>
+            <h5 class="text" style="background-color: #0f0">i like css</h5>
+            <h6 class="text">:) ;)</h6>
+            <p class="text">(-_-)</p>
+            <p class="text subtext">[`=~_~=´]</p>
+            <span class="text">/(;-;)\</span>
+        </div>
+
+        <div class="container">
+            <a href="#">click me</a>
+
+            <div class="box">
+                <a href="#">click me</a>
+
+                <div class="children-box">
+                    <a href="#">click me</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <article lang="pt-br">test</article>
+            <article lang="en">test</article>
+            <article>test</article>
+        </div>
+    </body>
+</html>

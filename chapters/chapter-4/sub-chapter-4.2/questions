@@ -1,0 +1,17 @@
+1. You want to add a comment to your style sheet that says “temporary.” Which is the proper line to add to the CSS file?
+A. //temporary
+B. --temporary
+C. /* temporary */ X
+D. rem temporary
+
+2. You want to maintain separation between structure and presentation. How do you create your style rules?
+A. Use inline styles.
+B. Use embedded styles.
+C. Use external style sheets. X
+D. In the HTML document, specify @import to load style sheets.
+
+3. You want your printer.css style sheet to target printers. How would you set up the style sheet link?
+A. <link rel=’printer’ type=’text/css’ href=’Content/printer.css’ />
+B. <link rel=’stylesheet’ type=’text/css’ href=’Content/printer.css’ media=’print’ /> X
+C. <link rel=’stylesheet’ type=’text/css’ href=’Content/printer.css’ />
+D. <link rel=’stylesheet’ type=’text/css’ href=’Content/printer.css’ target=’print’ />
