@@ -1,5 +1,5 @@
 :root{
-    --border: 1px solid #000;
+    --border: 2px solid #000;
     --size: 50px;
 }
 
@@ -10,6 +10,9 @@
     width: fit-content;
     padding: 1rem;
     box-shadow: 1px 1px 4px 4px rgba(0,0,0,0.2);
+    margin: 4rem auto;
+    background-color: #009200;
+    font-family: monospace;
 }
 
 .calculator__calculate, .calculator__result{
@@ -17,6 +20,7 @@
     height: calc(var(--size) / 1.5);
     border: var(--border);
     margin-bottom: 1rem;
+    background-color: #fff;
 }
 
 .calculator > div:last-child{
@@ -31,6 +35,7 @@
     width: 100%;
     margin: 0 auto;
     height: var(--size);
+    background-color: #fff;
 }
 
 .calculator .calculator__reset{
