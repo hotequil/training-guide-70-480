@@ -9,67 +9,17 @@
                 --border-size-type: 8px solid;
             }
 
-            html, body, div, a, article, .container{
+            html, body, div, a, article, input, .container{
                 background-color: #fff;
             }
 
             *{
-                background-color: coral;
-            }
-
-            h1{
-                background-color: rgba(255, 255, 0, 0.75);
-            }
-
-            #subtitle{
-                background-color: #ffdd99;
-            }
-
-            .text{
-                background-color: #60bdff;
-            }
-
-            p:not(.subtext){
-                background-color: #b22222 !important;
-            }
-
-            .box a{
-                text-decoration: none;
-                background-color: cadetblue;
-                font-size: 2rem;
-                color: #fff;
-            }
-
-            .container .box > a{
-                background-color: #00ffe1;
-            }
-
-            article{
-                font-size: 1.75rem;
-            }
-
-            article:lang(en){
-                color: #ff0008;
-            }
-
-            article:lang(pt-br){
-                color: #00008b;
-            }
-
-            a:hover{
-                border: var(--border-size-type) #77ff00;
-            }
-
-            a:focus{
-                border: var(--border-size-type) #ff0000;
-            }
-
-            a:active{
-                border: var(--border-size-type) #0055ff;
+                background-color: #ff7f50;
             }
         </style>
+        <link rel="stylesheet" href="./index.css">
     </head>
-    <body>
+    <body style="margin: 2rem">
         <div class="container">
             <h1>hello</h1>
             <h2 id="subtitle">world</h2>
@@ -98,6 +48,60 @@
             <article lang="pt-br">test</article>
             <article lang="en">test</article>
             <article>test</article>
+        </div>
+
+        <div class="container">
+            <input type="text" placeholder="click me">
+            <input type="checkbox">
+        </div>
+
+        <div class="container grid">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+        </div>
+
+        <div class="container">
+            <p class="content-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <div class="container">
+            <div class="hello-world"></div>
+        </div>
+
+        <div class="container">
+            <span>hey</span>
+            <span>hello</span>
+            <span>hi</span>
+            <div class="adjacent subsequent">div adjacent and subsequent</div>
+            <span>hey</span>
+            <span>hello</span>
+            <span>hi</span>
+        </div>
+
+        <div>
+            <a href="https://www.google.com">google</a>
+            <a href="https://www.ibm.com">ibm</a>
+            <span class="color-blue bg-yellow border-black">teste with selector by attrs</span>
+        </div>
+
+        <div>
+            <p class="inheritance">
+                hello <span>world</span>
+            </p>
         </div>
     </body>
 </html>
