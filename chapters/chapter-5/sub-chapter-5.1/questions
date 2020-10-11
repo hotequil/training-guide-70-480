@@ -1,0 +1,17 @@
+1. You are creating a webpage that will display short stories, and you want the stories to be shareable on other sites. Which element should each story be wrapped with?
+A. <section>
+B. <pre>
+C. <aside>
+D. <article> X
+
+2. You want to indicate an important item in your content text. Which element do you use?
+A. <b>
+B. <em>
+C. <strong> X
+D. <i>
+
+3. You want to identify the author of webpages on your website by providing the author name and email address in the footer of each page. What is the proper way to do this?
+A. <address><a href=”email:author@Contoso.com”>Author Name</a></address> X
+B. <contact><a href=”email:author@Contoso.com”>Author Name</a></contact>
+C. <author><a href=”email:author@Contoso.com”>Author Name</a></author>
+D. <name><a href=”email:author@Contoso.com”>Author Name</a></name>

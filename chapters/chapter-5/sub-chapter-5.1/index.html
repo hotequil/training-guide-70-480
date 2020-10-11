@@ -4,6 +4,15 @@
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
         <title>Thinking HTML5 semantics</title>
+        <style>
+            ol li:nth-child(even){
+                list-style-type: upper-roman;
+            }
+
+            ul li:nth-child(even){
+                list-style-type: square;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -30,7 +39,7 @@
                         <h3>hello</h3>
                         <h4>world</h4>
                     </hgroup>
-                    <p><strong>Lorem ipsum</strong> dolor <mark>sit</mark> amet, <em lang="pt-br">consectetur adipiscing</em> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p><strong>Lorem ipsum</strong> dolor <mark>sit</mark> amet, <abbr title="Hypertext Markup Language">HTML</abbr> <em lang="pt-br">consectetur adipiscing</em> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </article>
                 <hr>
                 <article>
@@ -38,7 +47,7 @@
                         <h3>hello</h3>
                         <h4>world</h4>
                     </hgroup>
-                    <p><strong>Lorem ipsum</strong> dolor <mark>sit</mark> amet, <em lang="pt-br">consectetur adipiscing</em> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p><strong>Lorem ipsum</strong> dolor <mark>sit</mark> amet, <abbr title="Hypertext Markup Language">HTML</abbr> <em lang="pt-br">consectetur adipiscing</em> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </article>
                 <hr>
                 <article>
@@ -46,15 +55,81 @@
                         <h3>hello</h3>
                         <h4>world</h4>
                     </hgroup>
-                    <p><strong>Lorem ipsum</strong> dolor <mark>sit</mark> amet, <em lang="pt-br">consectetur adipiscing</em> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p><strong>Lorem ipsum</strong> dolor <mark>sit</mark> amet, <abbr title="Hypertext Markup Language">HTML</abbr> <em lang="pt-br">consectetur adipiscing</em> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </article>
             </section>
             <aside role="complementary">
                 <h4>hello dude!</h4>
-                <p>Lorem ipsum dolor sit amet, <b>consectetur</b> <i lang="pt-br">adipiscing</i> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis pellentesque id nibh tortor.</p>
+                <p><dfn>Lorem ipsum</dfn> dolor sit amet, <b>consectetur</b> <i lang="pt-br">adipiscing</i> elit, sed do eiusmod tempor incididunt ut labore <br>et dolore magna aliqua. Mattis pellentesque <wbr>id nibh tortor.</p>
+                <blockquote cite="https://libvw.com/article/6588fbaa-ca27-4831-b457-35a514119b31">
+                    <p>Um estudo da universidade de edimburgo na escócia mostra que lockdowns ou isolamentos sociais podem levar a mais mortes, pelo vírus do PCC, pelo vírus do partido comunista chinês, que a ausência dessas medidas. Esse estudo foi uma simulação matemática de diversos cenários alternativos de contaminação, com um modelo que faz distinção entre pessoas jovens e idosas.</p>
+                    <footer>
+                        <p>
+                            <span>by Peter Turguniev,</span>
+                            <cite>Isolamento social causou 10,5% a mais de mortes por COVID-19</cite>
+                        </p>
+                    </footer>
+                </blockquote>
+                <q cite="https://libvw.com/article/133cd7b2-6a7b-409a-a71f-ca3826c67b81">The Promised Neverland - o anime mais ancap</q>
+                <pre>
+                    <code>
+                        const <var>test</var> = () => alert("test");
+                        <var>test</var>();
+                    </code>
+                    <samp>
+                        throw alert with text: "test"
+                    </samp>
+                </pre>
+                <figure>
+                    <img src="./celso-blues-boy-album-som-na-guitarra.jpg" alt="Som na guitarra album image">
+                    <figcaption>Som na guitarra album released on April 24, 1984 by Universal Music International Ltda.</figcaption>
+                </figure>
+                <details>
+                    <summary>good morning</summary>
+                    <p><sup>good</sup> <sub>morning</sub> <small>guy</small>, <del>have</del> <ins>a</ins> <u>great</u> <s>day</s>! At <time>10pm</time>. <kbd>Ctrl</kbd></p>
+                </details>
+                <ruby>
+                    <bdo dir="rtl">漢</bdo> <bdi>إيان</bdi> <rp>(</rp><rt>Kan</rt><rp>)</rp>
+                    <bdo dir="rtl">字</bdo> <bdi>Julie R.</bdi> <rp>(</rp><rt>ji</rt><rp>)</rp>
+                </ruby>
+                <section>
+                    <h3>favorite fruits</h3>
+                    <ol> <!-- type="A" reversed start="3" -->
+                        <li>banana</li>
+                        <li>apple</li>
+                        <li>orange</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>some fruits</h3>
+                    <ul>
+                        <li>banana</li>
+                        <li>apple</li>
+                        <li>orange</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>tools for web</h3>
+                    <dl>
+                        <dt>XML</dt>
+                        <dt>HTML</dt>
+                        <dd>Markup languages</dd>
+                        <dt>JavaScript</dt>
+                        <dd>programming language</dd>
+                        <dt>CSS</dt>
+                        <dd>stylist of a web page</dd>
+                        <dd>based in cascading</dd>
+                        <dd>it was born in 1996</dd>
+                    </dl>
+                </section>
             </aside>
         </main>
         <footer>
+            <address>
+                <p>Times Square Street</p>
+                <a href="tel:+5599999999">9999-9999</a>
+                <a href="mailto:test@test.com">test@test.com</a>
+            </address>
             <p role="contentinfo">copyright :)</p>
         </footer>
     </body>
