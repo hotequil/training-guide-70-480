@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Working with tables</title>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./index.css">
+        <!-- ESTILIZAR TABLES -->
+
+    </head>
+    <body>
+        <main>
+            <section>
+                <h2 class="title">Table with best countries to live</h2>
+                <table class="table"> <!-- i can have one or more tbody in my table, but only thead and tfoot -->
+                    <caption class="table__caption">Ranking economic liberty</caption>
+                    <colgroup>
+                        <col span="1" class="column-country">
+                        <col span="1" class="column-classification">
+                        <col span="1" class="column-points">
+                        <col span="1" class="column-changes">
+                        <col span="1" class="column-status">
+                    </colgroup>
+                    <thead>
+                        <tr class="table__row">
+                            <th class="table__details table__details--head">Country</th>
+                            <th class="table__details table__details--head table__details--align-right">Classification</th>
+                            <th class="table__details table__details--head table__details--align-right">Points</th>
+                            <th class="table__details table__details--head table__details--align-right">Changes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table__body">
+                        <tr class="table__row">
+                            <td class="table__details">Hong Kong</td>
+                            <td class="table__details table__details--align-right">1</td>
+                            <td class="table__details table__details--align-right">90.2</td>
+                            <td class="table__details table__details--point-positive table__details--align-right">+0.4</td>
+                        </tr>
+                        <tr class="table__row">
+                            <td class="table__details">Singapore</td>
+                            <td class="table__details table__details--align-right">2</td>
+                            <td class="table__details table__details--align-right">88.8</td>
+                            <td class="table__details table__details--point-positive table__details--align-right">+0.2</td>
+                        </tr>
+                        <tr class="table__row">
+                            <td class="table__details">New Zealand</td>
+                            <td class="table__details table__details--align-right">3</td>
+                            <td class="table__details table__details--align-right">84.2</td>
+                            <td class="table__details table__details--point-positive table__details--align-right">+0.5</td>
+                        </tr>
+                        <tr class="table__row">
+                            <td class="table__details">Switzerland</td>
+                            <td class="table__details table__details--align-right">4</td>
+                            <td class="table__details table__details--align-right">81.7</td>
+                            <td class="table__details table__details--point-positive table__details--align-right">+0.2</td>
+                        </tr>
+                        <tr class="table__row">
+                            <td class="table__details">Australia</td>
+                            <td class="table__details table__details--align-right">5</td>
+                            <td class="table__details table__details--align-right">80.9</td>
+                            <td class="table__details table__details--point-negative table__details--align-right">-0.1</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="table__row">
+                            <td class="table__details table__details--foot" colspan="4">Point average: 85,16</td> <!-- rowspan="2" -->
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </main>
+    </body>
+</html>

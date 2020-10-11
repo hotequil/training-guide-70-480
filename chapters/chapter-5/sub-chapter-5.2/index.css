@@ -1,0 +1,89 @@
+:root{
+    --green: rgba(0, 224, 0, 0.72);
+    --green-opacity: rgba(0, 224, 0, 0.12);
+    --grey: #202020;
+    --grey-opacity: rgba(32, 32, 32, 0.12);
+    --padding: .5rem;
+    --border: 1px solid var(--green);
+}
+
+html, body, table, tbody, thead, tr, td, th{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    margin: 2rem;
+}
+
+.title, .table__caption{
+    margin: 0 0 1rem 0;
+}
+
+.table__caption{
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--grey);
+}
+
+.table{
+    border: 1px solid var(--green);
+    border-collapse: collapse;
+    box-shadow: 4px 4px 6px var(--grey-opacity);
+}
+
+.table .table__row{
+    border: var(--border);
+}
+
+.table .table__row .table__details{
+    padding: var(--padding) calc(var(--padding) * 3);
+    border-right: var(--border);
+    text-align: left;
+    color: var(--grey);
+}
+
+.table .table__row .table__details.table__details--align-right{
+    text-align: right;
+}
+
+.table .table__row .table__details.table__details--foot{
+    font-weight: 600;
+    text-align: center;
+    height: 50px;
+    font-size: 1.15rem;
+    color: var(--grey);
+}
+
+.table .table__row .table__details.table__details--point-negative, .table .table__row .table__details.table__details--point-positive{
+    font-weight: 600;
+}
+
+.table .table__row .table__details.table__details--point-positive{
+    color: var(--green);
+}
+
+.table .table__row .table__details.table__details--point-negative{
+    color: #ef0e0e;
+}
+
+.table__details--head{
+    background-color: var(--grey-opacity);
+}
+
+.table__details--foot{
+    background-color: var(--green-opacity);
+}
+
+.table__body .table__row:nth-child(odd){
+    background-color: #ffffce;
+}
+
+.table__body .table__row:nth-child(even){
+    background-color: #ffffe6;
+}

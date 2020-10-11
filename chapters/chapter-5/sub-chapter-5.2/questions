@@ -1,0 +1,17 @@
+1. You are creating a webpage that will be used to display a list of salespeople with their sales statistics for the years of 2010, 2011, and 2012 in two categories: sales of products and sales of services. You want to each of the years to be in the horizontal header, and under each year, you will have a “Products” column and a “Services” column. How will you define the element for year 2011?
+A. <th>2011</th>
+B. <th colspan=”2”>2011</th> X
+C. <th span=”2”>2011</th>
+D. <th style=”2”>2011</th>
+
+2. You want to provide the ability to display or show columns, but you don’t want to add a style or other marking to each <td> element. How can you accomplish this?
+A. Add a <colgroup> element to the <table> element and define each column by using a <col> element inside the <colgroup> element. X
+B. Add an id to each <td> element and provide a unique id for each; use the ids in your style sheet rules to obtain the desired style.
+C. Add a <col> element to the <table> element and define each column by using a <id> element inside the <col> element.
+D. Add a <hidden> element to the <table> element and define each column by using a <col> element inside the <hidden> element.
+
+3. Which element can you add to the <table> element to provide a table caption?
+A. <thead>
+B. <colgroup>
+C. <caption> X
+D. <th>
