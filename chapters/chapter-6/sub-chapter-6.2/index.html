@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Working with jQuery</title>
+        <style>
+            div{
+                margin: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <section>
+                <h2>Change the DOM</h2>
+                <form>
+                    <div>
+                        <input type="radio"
+                               id="red"
+                               name="background-color"
+                               value="red">
+                        <label for="red">Red background</label>
+
+                        <input type="radio"
+                               id="green"
+                               name="background-color"
+                               value="green">
+                        <label for="green">Green background</label>
+
+                        <input type="radio"
+                               id="blue"
+                               name="background-color"
+                               value="blue">
+                        <label for="blue">Blue background</label>
+                        <input type="radio"
+                               id="default"
+                               name="background-color"
+                               value=""
+                               checked>
+                        <label for="default">Default background</label>
+                    </div>
+                    <div>
+                        <label for="write">Write something</label>
+                        <input type="text" id="write">
+                    </div>
+                    <div>
+                        <button data-button-three-alerts type="button">Throw three alerts</button>
+                        <button data-button-cancel-hello-alert type="button">Cancel hello alert</button>
+                        <button data-button-cancel-all-alerts type="button">Cancel all alerts</button>
+                    </div>
+                </form>
+            </section>
+            <section data-container-principal-title></section>
+        </main>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script src="./index.js"></script>
+    </body>
+</html>
