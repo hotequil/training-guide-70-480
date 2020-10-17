@@ -1,0 +1,17 @@
+1. You are creating a webpage that prompts for a new user’s profile information. The profile page requires the user to provide a user name, and if no user name is provided, the user will not be able to submit the page to the server. Which attribute must be placed on the user name text box to enforce this requirement?
+A. enforced
+B. mandatory
+C. required X
+D. user name
+
+2. When you want to send form data to the server to update data in the database, which HTTP method should you specify of the <form> element?
+A. POST X
+B. GET
+C. CONNECT
+D. SEND
+
+3. If you want to add a slider control to a webpage, which element do you use?
+A. <input type=”slider” name=”myslider” />
+B. <input type=”number” name=”myslider” />
+C. <input type=”submit” name=”myslider” />
+D. <input type=”range” name=”myslider” /> X

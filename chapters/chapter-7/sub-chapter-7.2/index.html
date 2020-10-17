@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Form validation</title>
+        <style>
+            input{
+                width: 200px;
+            }
+
+            input:valid{
+                border-color: #00f;
+            }
+
+            input:invalid{
+                border-color: #f00;
+            }
+
+            input:required{
+                border-color: #ff0;
+            }
+
+            input:optional{
+                border-color: #ddd;
+            }
+
+            #form > div:not(:first-child){
+                margin-top: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="form">
+            <div>
+                <label for="text">Text:</label>
+                <input id="text"
+                       type="text"
+                       name="text"
+                       autofocus
+                       required
+                       placeholder="Enter with a text">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email"
+                       id="email"
+                       name="email"
+                       required
+                       placeholder="Enter with a email">
+            </div>
+            <div>
+                <label for="url">Your page:</label>
+                <input type="url"
+                       id="url"
+                       name="url"
+                       placeholder="Enter with your page"
+                       required
+                       pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?">
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="tel"
+                       name="phone"
+                       pattern="\(\d{2}\)\s\d{4,5}-\d{4}"
+                       placeholder='Format is "(99) 9?9999-9999"'
+                       id="phone"
+                       required>
+            </div>
+            <div>
+                <label for="number">A number:</label>
+                <input type="number"
+                       id="number"
+                       name="number"
+                       placeholder="Enter with a number"
+                       min="0"
+                       value="2"
+                       max="100"
+                       step="5">
+            </div>
+            <div>
+                <label for="age">Your age:</label>
+                <input type="range" id="age" name="age" required min="0" max="140" value="18"> <!-- i can add step="15" -->
+            </div>
+            <div>
+                <button type="submit" name="submit" aria-label="Submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </body>
+</html>
