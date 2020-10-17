@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Understanding forms</title>
+        <style>
+            #form > div:not(:first-child){
+                margin-top: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="form" method="post">
+            <div>
+                <label for="text">Text:</label>
+                <input id="text" type="text" name="text" autofocus>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div>
+                <label for="content-text">Content text:</label>
+                <textarea name="content-text" id="content-text" cols="25" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="options">Options:</label>
+                <select id="options" name="options">
+                    <option value="first-option">Frist option</option>
+                    <option value="second-option" selected>Second option</option>
+                    <option value="third-option">Third option</option>
+                </select>
+            </div>
+            <div>
+                <label for="check">Check:</label>
+                <input type="checkbox" id="check" name="check">
+            </div>
+            <div>
+                <input type="submit" value="Submit" name="submit">
+                <!--<button type="submit" name="submit">Submit</button>-->
+                <!--<input type="image" src="./good-deias-anarchy.png" alt="Submit" title="Submit" aria-label="Submit">-->
+                <input type="reset" value="Reset" name="reset">
+            </div>
+        </form>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script src="./form.js"></script>
+    </body>
+</html>

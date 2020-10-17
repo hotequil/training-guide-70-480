@@ -1,0 +1,17 @@
+1. You are creating a webpage that will collect data and send it to a server. Which element must you implement to be able to send data to the server?
+A. <nav>
+B. <form> X
+C. <textarea>
+D. <div>
+
+2. When you retrieve a webpage from the server that contains Customer information, you want to be able to specify the id of the Customer within the URL. What can you use to provide the id?
+A. the PostBack
+B. the QueryString X
+C. the domain name
+D. a label
+
+3. You have serialized the form data that has an <input type=”email”> element. You want to deserialize the data to see the email address as entered. Which function can you use?
+A. decodeURIComponent X
+B. deserialize
+C. submit
+D. deserializeEmail
