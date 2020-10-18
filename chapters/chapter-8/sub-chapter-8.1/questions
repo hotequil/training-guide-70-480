@@ -1,0 +1,17 @@
+1. What can you publish by using npm?
+A. A JavaScript file
+B. A module
+C. A JavaScript class
+D. A package X
+
+2. What scoping can a package have? (Choose all that apply.)
+A. Local X
+B. Grouped
+C. Named
+D. Global X
+
+3. Why would you install the express package?
+A. Simplify website creation
+B. Provide session management
+C. Simplify retrieval of static content
+D. All of the above X
