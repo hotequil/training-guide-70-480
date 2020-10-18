@@ -1,0 +1,17 @@
+1. You want to create a REST service for your internal web service and use the HTTP verbs that match CRUD operations. You know the browser your users will be using is compatible, and the firewall will not be a problem. What are the HTTP verbs that match with CRUD (in order)?
+A. CREATE, POST, GET, DELETE
+B. GET, RETRIEVE, UPDATE, DELETE
+C. PUT, GET, POST, DELETE
+D. POST, GET, UPDATE, DELETE X
+
+2. What is the primary object used to make an asynchronous AJAX call that returns a JSON result?
+A. XMLHttpRequest X
+B. AjaxRequest
+C. JsonResponse
+D. AjaxAsync
+
+3. You want to use jQuery to make an AJAX call that will use the HTTP POST method. Which jQuery method can you use?
+A. $.post() X
+B. $.getJSON()
+C. $.get()
+D. $.param()
