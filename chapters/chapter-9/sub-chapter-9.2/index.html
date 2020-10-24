@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Working with web workers</title>
+    </head>
+    <body>
+        <section>
+            <h2>form:</h2>
+            <form>
+                <div>
+                    <label for="input">Message:</label>
+                    <input id="input" type="text" data-input>
+                </div>
+                <div>
+                    <button data-button type="submit">Send message</button>
+                </div>
+            </form>
+        </section>
+        <section>
+            <h2>messages:</h2>
+            <ul data-list></ul>
+        </section>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script>
+            const worker = new Worker('./worker.js');
+            const elementButton = $('[data-button]');
+            const elementInput = $('[data-input]');
+            const elementList = $('[data-list]');
+
+            worker.onmessage = event => elementList.append($(`<li>${event.data}</li>`)); // to finish use: worker.terminate()
+            elementButton.click(event => {
+                event.preventDefault();
+                worker.postMessage(elementInput.val());
+                elementInput.val('');
+            });
+        </script>
+    </body>
+</html>

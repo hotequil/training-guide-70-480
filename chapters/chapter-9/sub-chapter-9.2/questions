@@ -1,0 +1,11 @@
+1. In the web worker code, you want the asynchronous code to update the DOM. Which method can you use?
+A. updateDom().
+B. workerUpdate().
+C. dom().
+D. You cannot update the DOM from within the asynchronous code. X
+
+2. Which object can be used when the web worker and the creator need to reference the same object?
+A. Mutex.
+B. Semaphore.
+C. Closure.
+D. The web worker and the creator cannot reference the same object. X
