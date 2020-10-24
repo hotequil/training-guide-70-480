@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Asynchronous operations using jQuery and WinJS</title>
+        <style>
+            .progress{
+                background-color: #77ff00;
+                height: 50px;
+                width: 0;
+                transition: width .5s;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="progress"></div>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script>
+            const ajax = url => {
+                const XHR = new XMLHttpRequest();
+
+                XHR.onreadystatechange = () => XHR.readyState === 4 && XHR.status === 200 ? $('body').append(XHR.responseText) : null;
+
+                XHR.open("GET", url, true);
+                XHR.send();
+            };
+
+            ajax('https://jsonplaceholder.typicode.com/users');
+
+            const timeoutAsync = (milliseconds = 2000) => {
+                const deferred = $.Deferred();
+
+                setTimeout(() => deferred.resolve(), milliseconds); // deferred.reject()
+
+                return deferred.promise();
+            };
+
+            const methodAsync = () => {
+                const promise = timeoutAsync();
+
+                promise.done(() => console.log('i finished!'))
+                       .fail(() => console.log('i failed!'))
+                       .always(() => console.log('i executed!'));
+
+                return promise;
+            };
+
+            methodAsync();
+
+            const pipe = () => {
+                const firstPromise = timeoutAsync();
+                const secondPromise = firstPromise.pipe(() => timeoutAsync());
+                const thirdPromise = secondPromise.pipe(() => timeoutAsync());
+
+                thirdPromise.done(() => {
+                    firstPromise.done(() => console.log('firstPromise finished'));
+                    secondPromise.done(() => console.log('secondPromise finished'));
+
+                    console.log('thirdPromise finished');
+                });
+
+                return thirdPromise;
+            };
+
+            pipe();
+
+            const when = (includeTwo = false) => {
+                const firstPromise = timeoutAsync();
+                const secondPromise = includeTwo ? timeoutAsync() : $.when();
+
+                $.when(firstPromise, secondPromise)
+                 .then(
+                    () => console.log('done'),
+                    () => console.log('failed')
+                 );
+            };
+
+            when();
+            when(true);
+
+            const progress = () => {
+                let count = 0;
+                const deferred = $.Deferred();
+                const elementProgress = $('.progress');
+
+                $.when(
+                    timeoutAsync().always(() => deferred.notify(++count, 5, elementProgress)),
+                    timeoutAsync().always(() => deferred.notify(++count, 5, elementProgress)),
+                    timeoutAsync().always(() => deferred.notify(++count, 5, elementProgress)),
+                    timeoutAsync().always(() => deferred.notify(++count, 5, elementProgress)),
+                    timeoutAsync().always(() => deferred.notify(++count, 5, elementProgress))
+                ).then(
+                    () => {
+                        console.log('finished the progress!');
+                        deferred.resolve();
+                    },
+                    () => deferred.reject()
+                );
+
+                return deferred.promise();
+            };
+
+            progress().progress((progress, total, elementProgress) => elementProgress.css('width', `${(progress / total) * 100}%`));
+        </script>
+    </body>
+</html>

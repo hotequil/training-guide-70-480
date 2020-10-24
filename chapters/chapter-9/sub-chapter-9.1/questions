@@ -1,0 +1,23 @@
+1. Which method chains asynchronous operations?
+A. pipe() X
+B. done()
+C. resolve()
+D. always()
+
+2. Which method creates a resolved promise object?
+A. resolve()
+B. done()
+C. $.when() X
+D. $.Deferred().
+
+3. Which method do you call to subscribe to the successful completion of an asynchronous operation?
+A. done X
+B. always
+C. complete
+D. success
+
+4. Which method do you call on the deferred object to indicate a change in progress?
+A. progress
+B. notify X
+C. done
+D. resolve
