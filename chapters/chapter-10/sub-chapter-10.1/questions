@@ -1,0 +1,17 @@
+1. When working with the WebSocket object, which event can be used to retrieve the data that was received from the server?
+A. onopen
+B. onclose
+C. onmessage X
+D. onerror
+
+2. Which library would you use if you are creating a Node.js website and want to write browser-independent code that uses WebSocket?
+A. SignalR
+B. Socket.IO X
+C. FarmSockets
+D. AgnosticSocket
+
+3. You want to ensure that the WebSocket connection is not disconnected as a result of inactivity. How can you accomplish this?
+A. Add code to the onclose event to reopen the connection when it’s closed.
+B. Add code to send an empty message periodically before the connection is closed. X
+C. Set the keepAlive property on the WebSocket object to true.
+D. Create a new WebSocket object each time you send a message.

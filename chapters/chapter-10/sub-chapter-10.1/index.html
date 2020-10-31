@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Communicating by using WebSocket</title>
+    </head>
+    <body>
+        <form name="form" data-form>
+            <div>
+                <label for="text">Fill anything</label>
+                <input data-input type="text" id="text">
+            </div>
+            <div>
+                <button type="submit" name="send">Send</button>
+            </div>
+            <section>
+                <h3>messages:</h3>
+                <ul data-list></ul>
+            </section>
+        </form>
+        <script>
+            const form = document.querySelector('[data-form]');
+            const list = document.querySelector('[data-list]');
+            const input = document.querySelector('[data-input]');
+            const URLWebSocket = 'ws://echo.websocket.org/';
+            let webSocket = undefined;
+            let timeoutIdentifier = 0;
+
+            const isOpen = () => webSocket.readyState === webSocket.OPEN;
+
+            const send = event => {
+                event.preventDefault();
+
+                webSocket.send(input.value);
+            };
+
+            const connect = () => {
+                if(!window.WebSocket){
+                    document.write("your browser doesn't support the WebSocket");
+
+                    return;
+                }
+
+                webSocket = new WebSocket(URLWebSocket);
+                webSocket.onopen = event => {
+                    console.log('onopen event', event);
+
+                    keepAlive();
+                };
+                webSocket.onclose = event => {
+                    console.log('onclose event', event);
+
+                    cancelKeepAlive();
+                };
+                webSocket.onerror = event => console.log('onerror event', event);
+                webSocket.onmessage = event => {
+                    console.log('onmessage event', event);
+                    const prefix = isOpen() ? 'open:' : 'not open:';
+                    const item = document.createElement('li');
+
+                    item.textContent = `${prefix} ${event.data}`;
+
+                    list.append(item);
+                    input.value = '';
+                };
+
+                form.onsubmit = send;
+            };
+
+            const keepAlive = () => {
+                isOpen() ? webSocket.send("i keep alive") : null;
+
+                timeoutIdentifier = setTimeout(keepAlive, 5000);
+            };
+
+            const cancelKeepAlive = () => {
+                webSocket.send("i'm dead")
+                cancelTimeout(timeoutIdentifier);
+            };
+
+            connect();
+        </script>
+    </body>
+</html>
