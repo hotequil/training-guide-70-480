@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            :root{
+                --chat-height: 500px
+            }
+
+            html, body{
+                margin: 0;
+            }
+
+            .chat{
+                max-width: var(--chat-height);
+                border: 1px solid #000;
+                border-radius: 4px;
+                height: var(--chat-height);
+                margin: 2rem auto;
+                display: flex;
+                justify-content: space-between;
+                padding: 1rem;
+            }
+
+            .chat__message{
+                padding: .25rem;
+                background-color: rgba(0, 0, 0, 0.12);
+                border-radius: .5rem;
+            }
+
+            .form{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .form > *:last-child{
+                margin-left: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="chat">
+            <div data-chat-first class="chat__first"></div>
+            <div data-chat-second class="chat__second"></div>
+        </div>
+        <form class="form">
+            <div>
+                <label for="firstUser">First user:</label>
+                <input data-input-first-user id="firstUser" type="text">
+                <button data-button-first-user type="button">Send</button>
+            </div>
+            <div>
+                <label for="secondUser">Second user:</label>
+                <input data-input-second-user id="secondUser" type="text">
+                <button data-button-second-user type="button">Send</button>
+            </div>
+        </form>
+        <script>
+            const inputFirstUser = document.querySelector('[data-input-first-user]');
+            const inputSecondUser = document.querySelector('[data-input-second-user]');
+            const buttonFirstUser = document.querySelector('[data-button-first-user]');
+            const buttonSecondUser = document.querySelector('[data-button-second-user]');
+            const chatFirst = document.querySelector('[data-chat-first]');
+            const chatSecond = document.querySelector('[data-chat-second]');
+            const clearInput = input => input.value = '';
+            const webSocket = new WebSocket('ws://echo.websocket.org/');
+
+            buttonFirstUser.onclick = () => send(inputFirstUser, true);
+            buttonSecondUser.onclick = () => send(inputSecondUser);
+
+            const send = (input, isFirst) => {
+                const value = input.value;
+
+                if(!value) return;
+
+                webSocket.send(JSON.stringify({ value, isFirst }));
+
+                clearInput(input);
+            };
+
+            webSocket.onmessage = event => {
+                const data = JSON.parse(event.data);
+                const element = document.createElement('p');
+
+                element.textContent = data.value;
+                element.classList.add('chat__message');
+                data.isFirst ? chatFirst.appendChild(element) : chatSecond.appendChild(element);
+            };
+        </script>
+    </body>
+</html>
