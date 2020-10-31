@@ -1,0 +1,19 @@
+1. You want to include a video on your webpage that has an .avi file extension. If you supply the codec information, what will be displayed in browsers that support the <video> element but don’t have the codec?
+A. The browser will show the <video> element, but will not play the video. X
+B. The browser will automatically download the codec and play the video.
+C. The browser will display the contents of the <video> element.
+D. The browser will automatically download a version of the browser that supports the codec.
+
+2. You don’t want to supply an .ogg video because you find that the .ogg format is choppy and low quality. What other video formats can you include to be compatible with most browsers? (Choose all that apply.)
+A. .webm X
+B. .avi
+C. .mpg
+D. .mp4 X
+E. .mjpg
+
+3. The W3C standardized using which format for video?
+A. .webm
+B. .avi
+C. .mpg
+D. .mp4
+E. No standard has been selected. X

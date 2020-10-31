@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Playing video</title>
+    </head>
+    <body>
+        <video controls width="750">
+            <source type="video/mp4" src="./blind-melon-toes-across-the-floor.mp4" />
+            <source type="video/webm" src="./blind-melon-toes-across-the-floor.webm" />
+            <track label="Legend in english" kind="subtitles" srclang="en" src="./test.vtt" default>
+            Your browser doesn't support video.
+        </video>
+        <video src="./blind-melon-toes-across-the-floor.mp4"
+               controls
+               autoplay
+               preload="auto"
+               poster="./blind-melon.jpg"
+               loop>
+            Your browser doesn't support video.
+        </video>
+    </body>
+</html>
