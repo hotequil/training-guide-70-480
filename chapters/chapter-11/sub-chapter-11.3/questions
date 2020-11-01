@@ -1,0 +1,17 @@
+1. The <video> and <audio> elements inherit from which object?
+A. HTMLMediaElement X
+B. MediaElement
+C. MultiMediaElement
+D. the Multimedia object
+
+2. If you want your media to repeat continuously, which property would you set to true?
+A. preload
+B. readyState
+C. seekable
+D. loop X
+
+3. You want to trigger some code when the media is loaded. Which event should you subscribe to?
+A. onstalled
+B. onseeked
+C. onplay
+D. onloadeddata X

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Using the HTMLMediaElement object</title>
+    </head>
+    <body>
+        <video data-video src="./blind-melon-toes-across-the-floor.mp4">
+            Your browser doesn't support the video
+        </video>
+        <button data-play>Play</button>
+        <button data-pause>Pause</button>
+        <button data-less-volume>Less volume</button>
+        <button data-more-volume>More volume</button>
+        <script>
+            const video = document.querySelector('[data-video]');
+
+            document.querySelector('[data-play]').onclick = () => video.play();
+            document.querySelector('[data-pause]').onclick = () => video.pause();
+            document.querySelector('[data-less-volume]').onclick = () => video.volume -= 0.1;
+            document.querySelector('[data-more-volume]').onclick = () => video.volume += 0.1;
+        </script>
+    </body>
+</html>
