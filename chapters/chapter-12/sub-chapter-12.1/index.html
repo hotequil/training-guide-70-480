@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Drawing by using the <canvas> element</title>
+        <style>
+            :root{
+                --gray: #bbb;
+                --radius: 4px;
+                --space: 1rem;
+            }
+
+            html{
+                margin: 0;
+            }
+
+            body{
+                margin: var(--space);
+            }
+
+            .draw{
+                border: 1px solid var(--gray);
+                border-radius: var(--radius);
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas class="draw" data-draw>
+            Your browser doesn't support the canvas.
+        </canvas>
+        <script>
+            const canvas = document.querySelector('[data-draw]');
+            const canvasContext = canvas.getContext('2d');
+
+            canvasContext.fillStyle = '#007cff';
+            canvasContext.strokeStyle = '#d50000';
+            canvasContext.lineWidth = 5;
+            canvasContext.lineJoin = 'bevel';
+            canvasContext.font = 'bold 20px TimesNewRoman';
+
+            canvasContext.fillRect(10, 20, 70, 40); // start x, start y, width, height
+            canvasContext.clearRect(10, 20, 20, 20); // start x, start y, width, height
+            canvasContext.strokeRect(90, 5, 30, 40); // start x, start y, width, height
+
+            canvasContext.strokeStyle = '#ea80fc';
+            canvasContext.lineWidth = 1;
+            canvasContext.beginPath();
+            canvasContext.moveTo(20, 100);
+            canvasContext.lineTo(120, 70);
+            canvasContext.fillText('Hello world', 20, 90);
+            canvasContext.strokeText('Hello world', 10, 80);
+            canvasContext.closePath();
+            canvasContext.fill();
+            canvasContext.stroke();
+
+            canvasContext.strokeStyle = '#00e5ff';
+            canvasContext.lineWidth = 2;
+            canvasContext.beginPath();
+            canvasContext.moveTo(140, 40);
+            canvasContext.lineTo(220, 120);
+            canvasContext.rect(140, 40, 80, 80);
+            canvasContext.fill();
+            canvasContext.stroke();
+
+            canvasContext.beginPath();
+            canvasContext.moveTo(80, 80);
+            canvasContext.arcTo(100, 100, 300, 100, 300);
+            canvasContext.stroke();
+
+            canvasContext.beginPath();
+            canvasContext.arc(260, 40, 20, 0, 2 * Math.PI);
+            canvasContext.fill();
+            canvasContext.stroke();
+
+            // canvasContext.save();
+            // canvasContext.restore();
+
+            const img = new Image();
+
+            img.src = './circle.png';
+            img.onload = () => {
+                canvasContext.fillStyle = canvasContext.createPattern(img, 'repeat');
+                canvasContext.fillRect(0, 0, 400, 400);
+            };
+        </script>
+    </body>
+</html>

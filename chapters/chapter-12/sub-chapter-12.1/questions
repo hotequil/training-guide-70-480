@@ -1,0 +1,18 @@
+1. Which code example can be used to draw a rectangle on a <canvas> element that has an id of myCanvas?
+A. var canvas = document.getElementById(‘myCanvas’);
+   var ctx = canvas.getContext();
+   ctx.rectangle(10, 10, 50, 75);
+B. var canvas = document.getElementById(‘myCanvas’);
+   canvas.rectangle(10, 10, 50, 75);
+C. var canvas = document.getElementById(‘myCanvas’);
+   var ctx = canvas.getContext(‘2d’);
+   ctx.fillRect(10, 10, 50, 75); x
+D. var canvas = document.getElementById(‘myCanvas’);
+   var ctx = canvas.getContext();
+   ctx.fillRect(10, 10, 50, 75);
+
+2. You want to draw an arc that is approximately three-quarters of a circle. Which method is the easiest to use to accomplish this task?
+A. arcTo()
+B. arc() X
+C. circle()
+D. dot()
