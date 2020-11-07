@@ -1,0 +1,23 @@
+1. Which of the following events trigger continuously during a drag and drop operation? (Choose all that apply.)
+A. dragstart 
+B. drag X
+C. dragend
+D. dragenter
+E. dragover X
+F. dragleave
+G. drop
+
+2. Which of the following events are associated with the item being dragged? (Choose all that apply.)
+A. dragstart X
+B. drag X
+C. dragend X
+D. dragenter
+E. dragover
+F. dragleave
+G. drop
+
+3. Using the DataTransfer object, what kind of data can you pass to the drop event?
+A. Any valid string, number, date/time, or Boolean value
+B. Any URL that is within the same domain as the webpage
+C. Any JSON object
+D. Any object that can be represented as a string or URL X

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Dragging and dropping</title>
+        <style>
+            :root{
+                --border: 4px solid #000;
+                --box-size: 220px;
+                --space: 1rem;
+                --radius: 8px;
+                --time: .375s;
+                --background-color-no-active: #eee;
+                --background-color-active: #ccc;
+                --small-shadow: 2px 2px 4px rgba(0, 0, 0, 0.36);
+                --large-shadow: 6px 6px 8px rgba(0, 0, 0, 0.42);
+            }
+
+            body{
+                height: 100vh;
+                margin: 0;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .container{
+                margin: 0 auto;
+                width: 100%;
+                max-width: 500px;
+                border: var(--border);
+                display: grid;
+                padding: var(--space);
+                grid-gap: var(--space);
+                border-radius: var(--radius);
+                grid-template-columns: repeat(2, 1fr);
+                box-shadow: var(--small-shadow);
+            }
+
+            .container__box{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: var(--box-size);
+            }
+
+            .container__item{
+                width: 100%;
+                height: 100%;
+                background: var(--background-color-no-active);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: var(--radius);
+                border: var(--border);
+                font-family: monospace;
+                font-size: 4rem;
+                box-sizing: border-box;
+            }
+
+            .drag{
+                transition: box-shadow var(--time), background-color var(--time);
+            }
+
+            .drag--small{
+                box-shadow: var(--small-shadow);
+                background-color: var(--background-color-no-active);
+            }
+
+            .drag--large{
+                box-shadow: var(--large-shadow);
+                background-color: var(--background-color-active);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div data-box class="container__box"><div data-item draggable="true" class="drag drag--small container__item container__item--one">1</div></div>
+            <div data-box class="container__box"><div data-item draggable="true" class="drag drag--small container__item container__item--two">2</div></div>
+            <div data-box class="container__box"><div data-item draggable="true" class="drag drag--small container__item container__item--three">3</div></div>
+            <div data-box class="container__box"></div>
+        </div>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script>
+            const items = $('[data-item]');
+            const boxes = $('[data-box]');
+            let activeItem = undefined;
+
+            const writeEvent = event => {
+                console.log(event);
+                console.log(event.handleObj.type);
+            };
+
+            const onDragStart = event => {
+                activeItem = $(event.target);
+                activeItem.addClass('drag--large');
+
+                writeEvent(event);
+            };
+
+            const onDragEnd = event => {
+                $(event.target).removeClass('drag--large');
+                writeEvent(event);
+            };
+
+            const onDrag = event => writeEvent(event);
+
+            items.on('dragstart', onDragStart);
+            items.on('drag', () => onDrag);
+            items.on('dragend', onDragEnd);
+
+            const preventDefault = event => {
+                event.preventDefault();
+                writeEvent(event);
+            }
+
+            const onDrop = event => {
+                const currentElement = $(event.target);
+
+                if(currentElement.data().box === "" && currentElement.children().length === 0){
+                    activeItem.detach();
+                    activeItem.appendTo(currentElement);
+                }
+            }
+
+            boxes.on('dragenter', preventDefault);
+            boxes.on('dragover', preventDefault);
+            boxes.on('drop', onDrop);
+        </script>
+    </body>
+</html>
