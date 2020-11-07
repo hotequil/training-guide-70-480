@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Basic positioning</title>
+    </head>
+    <body>
+        <div>
+            <p data-info>Click in the button to know your location</p>
+            <button onclick="getLocation()">Get location</button>
+        </div>
+        <script>
+            const info = document.querySelector('[data-info]');
+
+            const getLocation = () => {
+                if('geolocation' in navigator){
+                    navigator.geolocation.getCurrentPosition(
+                        position => info.textContent = `Date: ${(new Date(position.timestamp)).toLocaleString()} / Latitude: ${position.coords.latitude} / Longitude: ${position.coords.longitude}`,
+                        error => {
+                            switch(error.code){
+                                case error.PERMISSION_DENIED:
+                                    info.textContent = "User denied Geolocation access request.";
+                                    break;
+                                case error.POSITION_UNAVAILABLE:
+                                    info.textContent = "Location information unavailable.";
+                                    break;
+                                case error.TIMEOUT:
+                                    info.textContent = "Get user location request timed out.";
+                                    break;
+                                case error.UNKNOWN_ERROR:
+                                    info.textContent = "An unknown error occurred.";
+                                    break;
+                                default:
+                                    info.textContent = "An error occurred while obtaining geolocation.";
+                            }
+                        },
+                        {
+                            enableHighAccuracy: true, // high reach
+                            timeout: 5000, // limit time
+                            maximumAge: 64000 // cache time
+                        }
+                    )
+                } else{
+                    info.textContent = "Your browser doesn't support geolocation.";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+1. Which method gets your current location once from the Geolocation object?
+A. watchPosition()
+B. watchLocation()
+C. getCurrentPosition() X
+D. getCurrentLocation()
+
+2. Which of the following is not a valid parameter on the getCurrentPosition method?
+A. Error callback function
+B. Position options object
+C. Success callback function
+D. Use GPS only X
