@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Monitored positioning</title>
+    </head>
+    <body>
+        <div>
+            <p data-message>Get your current position for see informations.</p>
+            <button data-get>Get live position</button>
+            <button data-clear>Clear live position</button>
+        </div>
+        <div data-map></div>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script>
+            const message = $('[data-message]');
+            let watchId = 0;
+
+            $('[data-get]').on('click', () => {
+                if('geolocation' in navigator){
+                    watchId = navigator.geolocation.watchPosition(
+                        position => {
+                            const latitude = position.coords.latitude;
+                            const longitude = position.coords.longitude;
+
+                            message.text(`Date: ${(new Date(position.timestamp)).toLocaleString()} / Latitude: ${latitude} / Longitude: ${longitude}.`)
+
+                            const coordinates = new google.maps.LatLng(latitude, longitude);
+                            new google.maps.Marker({
+                                position: coordinates,
+                                map: new google.maps.Map(
+                                    $('[data-map]')[0],
+                                    {
+                                        zoom: 10,
+                                        center: coordinates,
+                                        mapTypeControl: false,
+                                        navigationControlOptions: {
+                                            style: google.maps.NavigationControlStyle.SMALL
+                                        },
+                                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                                    }
+                                ),
+                                title: "Hello world!"
+                            });
+                        },
+                        error => {
+                            switch(error.code){
+                                case error.PERMISSION_DENIED:
+                                    message.text("User denied Geolocation access request.");
+                                    break;
+                                case error.POSITION_UNAVAILABLE:
+                                    message.text("Location information unavailable.");
+                                    break;
+                                case error.TIMEOUT:
+                                    message.text("Get user location request timed out.");
+                                    break;
+                                case error.UNKNOWN_ERROR:
+                                    message.text("An unknown error occurred.");
+                                    break;
+                                default:
+                                    message.text("An error occurred while obtaining geolocation.");
+                            }
+                        },
+                        {
+                            enableHighAccuracy: true
+                        }
+                    );
+                }
+            });
+
+            $('[data-clear]').on('click', () => {
+                if(watchId !== 0){
+                    navigator.geolocation.clearWatch(watchId);
+                    watchId = 0;
+                    message.text('Finish watching.');
+                }
+            });
+
+            //calculate the distance
+            const getRadians = latlongDistance => latlongDistance * Math.PI / 180;
+            const getDistance = (firstLatitude, firstLongitude, secondLatitude, secondLongitude) => {
+                const earthRadius = 3959;
+                const latitudeRadians = getRadians(secondLatitude - firstLatitude);
+                const longitudeRadians = getRadians(secondLongitude - firstLongitude);
+                const a = Math.sin(latitudeRadians / 2) * Math.sin(latitudeRadians / 2) + Math.cos(getRadians(firstLatitude)) * Math.cos(getRadians(secondLatitude)) * Math.sin(longitudeRadians / 2) * Math.sin(longitudeRadians / 2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+                return `The distance is ${earthRadius * c}.`;
+            }
+
+            console.log(getDistance(-26.9253, -48.9603, -27.5969, -48.5495));
+
+            //google maps
+
+        </script>
+    </body>
+</html>

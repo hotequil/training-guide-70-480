@@ -1,0 +1,11 @@
+1. Which method continuously monitors your current location from the Geolocation object?
+A. watchPosition() X
+B. watchLocation()
+C. getCurrentPosition()
+D. getCurrentLocation()
+
+2. Which of the following formulas can you use to calculate the distance between two samples?
+A. haversine X
+B. Pythagorean theorem
+C. quadratic
+D. hyperbolic
