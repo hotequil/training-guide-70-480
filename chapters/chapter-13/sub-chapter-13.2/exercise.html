@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Jogo da trilha</title>
+        <style>
+            body{
+                margin: 1rem;
+                font-size: 16px;
+                font-family: monospace;
+            }
+
+            .board{
+                width: 800px;
+                height: 800px;
+                background-color: #8b4513;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 4px solid #fff;
+                position: relative;
+                margin: 0 auto;
+                box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.36);
+            }
+
+            .board::before{
+                content: "";
+                width: 100%;
+                height: 50%;
+                border-top: 4px solid #fff;
+                position: absolute;
+                top: 50%;
+                z-index: 1;
+            }
+
+            .board::after{
+                content: "";
+                width: 50%;
+                height: 100%;
+                border-left: 4px solid #fff;
+                position: absolute;
+                left: 50%;
+                z-index: 1;
+            }
+
+            .layer-two{
+                width: 600px;
+                height: 600px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 4px solid #fff;
+                background-color: #8b4513;
+                position: relative;
+            }
+
+            .layer-three{
+                width: 400px;
+                height: 400px;
+                background-color: #8b4513;
+                border: 4px solid #fff;
+                position: relative;
+                z-index: 2;
+            }
+
+            .stop{
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+                background-color: #fff;
+                position: absolute;
+                z-index: 3;
+                box-shadow:  0 0 10px rgba(0, 0, 0, 0.36);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .top-left{
+                top: -25px;
+                left: -25px;
+            }
+
+            .top-right{
+                top: -25px;
+                right: -25px;
+            }
+
+            .top-center{
+                top: -25px;
+                right: -50%;
+                transform: translateX(-25px);
+                left: 50%;
+            }
+
+            .bottom-center{
+                bottom: -25px;
+                right: -50%;
+                transform: translateX(-25px);
+                left: 50%;
+            }
+
+            .center-left{
+                top: 50%;
+                bottom: -50%;
+                transform: translateY(-25px);
+                left: -25px;
+            }
+
+            .center-right{
+                top: 50%;
+                bottom: -50%;
+                transform: translateY(-25px);
+                right: -25px;
+            }
+
+            .bottom-right{
+                bottom: -25px;
+                right: -25px;
+            }
+
+            .bottom-left{
+                bottom: -25px;
+                left: -25px;
+            }
+
+            .title{
+                text-align: center;
+                font-size: 3rem;
+                margin: 0;
+            }
+
+            .container{
+                border-radius: 4px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                max-width: 1000px;
+                width: 100%;
+                background-color: rgba(107, 24, 24, 0.24);
+                border: 1px solid rgb(107, 24, 24);
+                margin: 3rem auto;
+                padding: 1rem;
+            }
+
+            .container h2{
+                margin: 0 auto 1rem auto;
+            }
+
+            .pieces{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .piece-one, .piece-two{
+                background-color: #00ffe1;
+                border-radius: 50%;
+                width: 37.5px;
+                display: block;
+                height: 37.5px;
+                margin: .25rem;
+                cursor: pointer;
+                box-shadow: 0 0 2px 2px rgba(0,0,0,0.12);
+            }
+
+            .piece-two{
+                background-color: #db00ff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="title">Jogo da trilha</h1>
+        <div data-pieces-wins class="container">
+            <h2>Peças ganhas</h2>
+            <div class="pieces"></div>
+        </div>
+
+        <div data-pieces-init class="container">
+            <h2>Peças iniciais</h2>
+            <div class="pieces">
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-one"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+                <span data-piece draggable="true" class="piece-two"></span>
+            </div>
+        </div>
+
+        <div class="board layer-one">
+            <span class="stop top-left"></span>
+            <span class="stop top-center"></span>
+            <span class="stop top-right"></span>
+            <span class="stop center-left"></span>
+            <span class="stop center-right"></span>
+            <span class="stop bottom-left"></span>
+            <span class="stop bottom-center"></span>
+            <span class="stop bottom-right"></span>
+            <div class="layer-two">
+                <span class="stop top-left"></span>
+                <span class="stop top-center"></span>
+                <span class="stop top-right"></span>
+                <span class="stop center-left"></span>
+                <span class="stop center-right"></span>
+                <span class="stop bottom-left"></span>
+                <span class="stop bottom-center"></span>
+                <span class="stop bottom-right"></span>
+                <div class="layer-three">
+                    <span class="stop top-left"></span>
+                    <span class="stop top-center"></span>
+                    <span class="stop top-right"></span>
+                    <span class="stop center-left"></span>
+                    <span class="stop center-right"></span>
+                    <span class="stop bottom-left"></span>
+                    <span class="stop bottom-center"></span>
+                    <span class="stop bottom-right"></span>
+                </div>
+            </div>
+        </div>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script>
+            const piecesWins = $('[data-pieces-wins]');
+            const piecesInit = $('[data-pieces-init]');
+            const stops = $('.stop');
+            const pieces = $('[data-piece]');
+            let activePiece = undefined;
+
+            pieces.on('dragstart', event => {
+                activePiece = $(event.target);
+            })
+
+            const preventDefault = event => event.preventDefault();
+            const onDrop = function(event){
+                preventDefault(event);
+                $(this).find('.pieces').append(activePiece);
+            };
+
+            piecesWins.on('dragenter dragover', preventDefault);
+            piecesInit.on('dragenter dragover', preventDefault);
+            stops.on('dragenter dragover', preventDefault);
+            piecesInit.on('drop', onDrop);
+            piecesWins.on('drop', onDrop);
+
+            stops.on('drop', function(event){
+                preventDefault(event);
+                $(event.target).append(activePiece);
+            })
+        </script>
+    </body>
+</html>
