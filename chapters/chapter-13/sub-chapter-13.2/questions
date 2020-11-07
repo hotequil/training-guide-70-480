@@ -1,0 +1,14 @@
+1. To which events do you need to subscribe to program file drag and drop? (Choose all that apply.)
+A. dragstart
+B. drag
+C. dragend
+D. dragenter X
+E. dragover X
+F. dragleave
+G. drop X
+
+2. Which of the following is not a property on the File object?
+A. name
+B. path X
+C. type
+D. size
