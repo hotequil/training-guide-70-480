@@ -1,0 +1,17 @@
+1. Which of the following is not a property of the StorageEvent object?
+A. oldValue
+B. key
+C. changeType X
+D. storageArea
+
+2. If you modify a value stored in sessionStorage, which of the following could receive notifications of the change (if subscribed)?
+A. Another tab opened to a page on the same domain
+B. A second browser window open to the same page
+C. An iframe on the same page whose source is within the same domain X
+D. The operating system that is hosting the browser
+
+3. Which of the following is the correct way to cancel a storage event?
+A. event.returnValue = false;
+B. event.preventDefault();
+C. event.stopPropagation();
+D. Storage events cannot be canceled after they are triggered. X
