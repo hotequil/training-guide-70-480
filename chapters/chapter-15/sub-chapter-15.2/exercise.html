@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Book store</title>
+        <style>
+            html{
+                background-color: #fff;
+            }
+
+            body{
+                max-width: 400px;
+                width: 100%;
+                margin: 2rem auto;
+            }
+
+            .form{
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form .form__field{
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form .form__button{
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            .form .form__input{
+                margin-top: .25rem;
+            }
+
+            .list{
+                margin: 0 0 1.25rem 0;
+                padding: 0;
+                width: 100%;
+                list-style: none;
+            }
+
+            .list .list__item{
+                background-color: #eee;
+                border-radius: 2px;
+                border: 1px solid #ccc;
+                padding: .375rem;
+                box-sizing: border-box;
+                margin-top: .5rem;
+                line-break: anywhere;
+                word-break: break-word;
+            }
+
+            .list .list__item:first-child{
+                margin-top: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="list" data-list>
+            <li data-list-not-found class="list__item">No books added</li>
+        </ul>
+        <form data-form class="form">
+            <div class="form__field">
+                <label for="name">Book's name:</label>
+                <input class="form__input" data-input-name type="text" name="name" id="name" placeholder="Put the book's name here" required>
+            </div>
+            <div>
+                <button class="form__button" type="submit" aria-label="Create book">Create book</button>
+            </div>
+        </form>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script>
+            const form = $('[data-form]');
+            const list = $('[data-list]');
+            const inputName = $('[data-input-name]');
+            const booksList = localStorage.getItem('booksList') ? JSON.parse(localStorage.getItem('booksList')) : [];
+            const init = () => booksList.forEach(booksName => appendBooksNameToList(booksName));
+            const appendBooksNameToList = booksName => {
+                list.append($(`<li class="list__item">${booksName}</li>`));
+                deleteNotFound();
+            };
+            const deleteNotFound = () => {
+                const listNotFound = $(`[data-list-not-found]`);
+                if(listNotFound.length) listNotFound.remove();
+            };
+
+            form.submit(event => {
+                event.preventDefault();
+
+                const value = inputName.val().trim();
+
+                if(value){
+                    deleteNotFound();
+                    appendBooksNameToList(value);
+                    booksList.push(value);
+                    localStorage.setItem('booksList', JSON.stringify(booksList));
+                    inputName.val('');
+                }
+            });
+
+            init();
+        </script>
+    </body>
+</html>
