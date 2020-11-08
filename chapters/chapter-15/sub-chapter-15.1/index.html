@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Introducing web storage</title>
+    </head>
+    <body>
+        <script src="./jquery-3.5.1.min.js"></script>
+        <script src="./jquery-cookie/jquery.cookie.js"></script>
+        <script>
+            //vanilla js
+            const setCookie = (key, value, expiration) => {
+                const date = new Date();
+                date.setDate(date.getDate() + expiration);
+
+                value = `${value};expires=${date.toUTCString()}`;
+
+                document.cookie = `${key}=${value}`;
+            };
+
+            setCookie('name', 'jerry', 8);
+
+            const trimSplitGetIndex = (word, expression, index) => word.trim().split(expression)[index];
+
+            const getCookie = key => {
+                const cookieSelected = document.cookie.split(';').filter(item => trimSplitGetIndex(item, '=', 0) === key)[0];
+
+                if(cookieSelected) return trimSplitGetIndex(cookieSelected, '=', 1);
+            };
+
+            console.log(getCookie('name'));
+
+            //with jquery
+            $.cookie('otherName', 'Layne');
+            console.log($.cookie('otherName'));
+
+            //localStorage
+            try{
+                localStorage.setItem('fruit', 'apple');
+                localStorage['hello'] = 'world' //or localStorage.hello = 'world'
+
+                console.log(localStorage.getItem('fruit'), localStorage['hello']); //or localStorage.hello
+
+                console.log(localStorage.length);
+
+                localStorage.removeItem('fruit');
+                delete localStorage['hello']
+
+                console.log(localStorage.length);
+
+                localStorage.setItem('vocal', 'layne');
+                localStorage.setItem('guitar', 'jerry');
+                localStorage.setItem('bass', 'mike');
+                localStorage.setItem('drums', 'sean');
+
+                console.log(localStorage.key(2));
+                console.log(localStorage.length);
+
+                localStorage.clear();
+
+                console.log(localStorage.length);
+
+                localStorage.setItem('myObject', JSON.stringify({ name: 'kurt', lastName: 'cobain' }));
+                console.log(localStorage.getItem('myObject'), JSON.parse(localStorage.getItem('myObject')));
+            } catch(error){
+                console.log(error);
+            } finally{
+                console.log(`localStorage is supported by mt browser: ${'localStorage' in window}`);
+                console.log(`sessionStorage is supported by mt browser: ${'sessionStorage' in window}`);
+            }
+        </script>
+    </body>
+</html>

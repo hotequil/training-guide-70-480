@@ -1,0 +1,30 @@
+1. Which of the following URLs can access data stored on http://www.example.com/lesson1/page1.html?
+A. http://www2.example.com/lesson1/page1.html
+B. http://www.example.com:8081/lesson1/page1.html
+C. https://www.example.com/lesson1/page1.html
+D. http://www.example.com/lesson2/page1.html X
+E. http://example.com/lesson1/page1.html
+
+2. What is the web storage limit currently recommended by the World Wide Web Consortium (W3C)?
+A. 4 KB
+B. 5 MB X
+C. 500 MB
+D. 10 MB
+
+3. What is the correct syntax for removing all values existing in localStorage?
+A. localStorage.clear(); X
+B. localStorage.removeAll();
+C. localStorage.abandon();
+D. localStorage.reset();
+
+4. Which of the following storage mechanisms has the highest level of cross-browser support?
+A. Web storage X
+B. Web SQL
+C. IndexDB
+D. FileSystem API
+
+5. Which of the following features does web storage support?
+A. Indexing
+B. Transactions
+C. Asynchronous read/write
+D. Simple key/value pair storage X
