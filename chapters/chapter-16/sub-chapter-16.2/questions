@@ -1,0 +1,17 @@
+1. Which of the following features is not supported by IndexedDB?
+A. Transactions
+B. Cursors
+C. Indexed
+D. SQL X
+
+2. What is the correct method for creating a transaction that will add a new record?
+A. var trans = db.transaction(‘authors’, ‘readonly’);
+B. var trans = db.transaction(‘authors’, ‘readwrite’); X
+C. var trans = db.transaction(‘authors’);
+D. var trans = db.createTransaction(‘authors’,’readwrite’);
+
+3. Which object store method retrieves a record by its key value?
+A. get(key) X
+B. find(key)
+C. single(key)
+D. first(key)

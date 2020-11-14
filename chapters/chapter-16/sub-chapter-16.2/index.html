@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Working with IndexedDB</title>
+    </head>
+    <body>
+        <button data-delete-db>Delete IndexedDB</button>
+        <script>
+            // add IndexedDB support
+            (() => {
+                indexedDB = window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+                IDBTransaction = window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+                IDBCursor = window.IDBCursor = window.IDBCursor || window.webkitIDBCursor;
+                IDBKeyRange = window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange;
+            })();
+
+            const dbName = 'Vehicles';
+            const open = indexedDB.open(dbName);
+            const cars = 'Cars';
+            let db = null;
+            let transaction = null;
+            let store = null;
+
+            const message = (request, method) => {
+                request.onsuccess = response => console.log(`${method} success`, response);
+                request.onerror = response => console.log(`${method} error`, response);
+            };
+
+            const createCar = () => message(store.add({ model: 'Chevrolet', name: 'Opala' }), 'add');
+            const updateCar = () => message(store.put({ model: 'Ford', name: 'Belina', id: 30 }), 'put');
+            const deleteCar = () => message(store.delete(28), 'delete')
+            const readCar = () => message(store.get(30), 'get');
+            const readAllCars = orderBy => {
+                const request = orderBy ? store.index(orderBy).openCursor(null) : store.openCursor();
+
+                request.onsuccess = response => {
+                    const cursor = response.target.result;
+
+                    if(!cursor){
+                        console.log('without car');
+                        return
+                    }
+
+                    console.log('cursor', cursor.value.model);
+                    cursor.continue();
+                };
+
+                request.onerror = response => console.log(response);
+            };
+
+            open.onupgradeneeded = response => {
+                const store = response.currentTarget.result.createObjectStore(cars, { keyPath: 'id', autoIncrement: true });
+
+                store.createIndex('model', 'model');
+                // store.createIndex('uuid', 'uuid', { unique: true });
+                // store.deleteIndex('uuid');
+                // store.deleteObjectStore('Cars');
+            };
+
+            open.onsuccess = response => {
+                console.log(response);
+
+                db = response.currentTarget.result;
+                transaction = db.transaction([cars], 'readwrite'); // or 'readonly'
+                store = transaction.objectStore(cars);
+
+                createCar();
+                updateCar();
+                deleteCar();
+                readCar();
+                readAllCars();
+                readAllCars('model');
+            };
+
+            open.onerror = response => console.log(response);
+
+            const deleteDBButton = document.querySelector('[data-delete-db]');
+
+            deleteDBButton.onclick = () => {
+                const request = indexedDB.deleteDatabase(dbName);
+
+                request.onsuccess = response => console.log('db deleted', response);
+                request.onerror = response => console.log("db didn't delete", response);
+            };
+        </script>
+    </body>
+</html>
