@@ -1,0 +1,17 @@
+1. Which of the following would be a good candidate for Web SQL?
+A. Mobile applications built specifically for Safari on the iOS platform
+B. Mobile applications built for any mobile device
+C. Public-facing web applications X
+D. Mobile applications built specifically for Internet Explorer
+
+2. You need to create a new database. Which of the following commands should you use?
+A. var db = createDatabase(‘mydb’, ‘1.0’, ‘My database’, 5 * 1024 * 1024);
+B. var db = new Database(‘mydb’);
+C. var db = initDatabase(‘mydb’, ‘1.0’, ‘My database’, 5 * 1024 * 1024);
+D. var db = openDatabase(‘mydb’, ‘1.0’, ‘My database’, 5 * 1024 * 1024); X
+
+3. Which of the following will correctly insert a new record, using values passed in as SQL arguments to an executeSql() call?
+A. t.executeSql(“INSERT INTO books(title) VALUES(?)”, [“A Tale of Two Cities”]); X
+B. t.executeSql(“INSERT INTO books(title) VALUES([0])”, [“A Tale of Two Cities”]);
+C. t.executeSql(“INSERT INTO books(title) VALUES([1])”, [“A Tale of Two Cities”]);
+D. t.executeSql(“INSERT INTO books(title) VALUES({0})”, [“A Tale of Two Cities”])

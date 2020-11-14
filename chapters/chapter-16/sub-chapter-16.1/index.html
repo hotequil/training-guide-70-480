@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Working with Web SQL</title>
+    </head>
+    <body>
+        <h1>See the developer tools</h1>
+        <script>
+            const db = openDatabase('Songs', '' /* or 1.0 */, 'The best grunge songs', 5242880);
+            const error = error => console.log(error);
+            const success = () => console.log('migration success');
+            const migration = transaction => {
+                transaction.executeSql(
+                    `
+                        CREATE TABLE IF NOT EXISTS songs(
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            author TEXT,
+                            name TEXT,
+                            dateCreated TIMESTAMP DEFAULT(datetime('now', 'localtime'))
+                        )
+                    `
+                );
+            };
+
+            db.changeVersion(db.version, '2.0', migration, error, success);
+
+            console.log(db.version);
+
+            const addSong = (author, name, callbackSuccess, callbackError) => {
+                db.transaction(transaction => {
+                    transaction.executeSql(`INSERT INTO songs(author, name) VALUES(?, ?)`, [author, name], callbackSuccess, callbackError);
+                })
+            }
+
+            addSong(
+                'Jerry Cantrell',
+                'Hurt a long time',
+                (transaction, results) => console.log(transaction, results),
+                error => console.log(error)
+            );
+
+            const updateSong = (author, name, id, callbackSuccess, callbackError) => {
+                db.transaction(transaction => {
+                    transaction.executeSql(
+                        `UPDATE songs SET author = ?, name = ? WHERE id = ?`, [author, name, id], callbackSuccess, callbackError
+                    );
+                });
+            };
+
+            updateSong(
+                'Mad Season',
+                'Long gone day',
+                1,
+                (transaction, results) => console.log(transaction, results),
+                error => console.log(error)
+            );
+
+            const deleteSong = (id, callbackSuccess, callbackError) => {
+                db.transaction(transaction => {
+                    transaction.executeSql(`DELETE FROM song WHERE id = ?`, [id], callbackSuccess, callbackError);
+                })
+            };
+
+            deleteSong(
+                2,
+                transaction => console.log(transaction),
+                error => console.log(error)
+            );
+
+            const readSongs = (callbackSuccess, callbackError) => {
+                db.transaction(transaction => {
+                    transaction.executeSql(`SELECT * FROM songs`, [], callbackSuccess, callbackError);
+                });
+            };
+
+            readSongs(
+                (transaction, results) => {
+                    const ul = document.createElement('ul');
+                    const body = document.getElementsByTagName('body')[0];
+
+                    [...results.rows].forEach(song => {
+                        const li = document.createElement('li');
+
+                        li.textContent = `${song.name} = ${song.author}`;
+
+                        ul.append(li);
+                    });
+
+                    body.append(ul);
+                },
+                error => console.log(error)
+            );
+
+            const readSong = (id, callbackSuccess, callbackError) => {
+                db.transaction(transaction => {
+                    transaction.executeSql(`SELECT * FROM songs WHERE id = ?`, [id], callbackSuccess, callbackError);
+                });
+            };
+
+            readSong(
+                1,
+                (transaction, results) => console.log(transaction, results),
+                error => console.log(error)
+            );
+
+            const readSongsThatStartsWith = (letterWithWildcard, callbackSuccess, callbackError) => {
+                db.transaction(transaction => {
+                    transaction.executeSql(`SELECT * FROM songs WHERE name LIKE ?`, [letterWithWildcard], callbackSuccess,callbackError);
+                });
+            };
+
+            readSongsThatStartsWith(
+                'Hurt%',
+                (transaction, results) => console.log(transaction, results),
+                error => console.log(error)
+            );
+        </script>
+    </body>
+</html>
