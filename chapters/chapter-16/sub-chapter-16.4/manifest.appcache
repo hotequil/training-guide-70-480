@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# version 1.0
+
+# files to cache
+CACHE:
+/styles/index.css
+https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
+
+# files that shouldn't be cached
+NETWORK:
+# ...
+
+# others files
+FALLBACK:
+/images/icons /images/not-found.jpg

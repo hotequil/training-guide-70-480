@@ -1,0 +1,11 @@
+1. Which of the following is a valid statement for the first line of a manifest file?
+A. CACHE
+B. CACHE MANIFEST X
+C. CACHE-MANIFEST
+D. CACHE-ALWAYS
+
+2. Which event is fired after an existing cache has been updated with new resources?
+A. downloading
+B. cached
+C. updateReady X
+D. completed
