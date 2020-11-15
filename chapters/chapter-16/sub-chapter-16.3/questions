@@ -1,0 +1,17 @@
+1. Which of the following methods should you use when storing files that are relatively unimportant and can be removed if the browser is low in available space?
+A. window.requestFileSystem(LOW, 5 * 1024 * 1024, getDirectory, handleError);
+B. window.requestFileSystem(PERSISTENT, 5 * 1024 * 1024, getDirectory, handleError);
+C. window.requestFileSystem(SIMPLE, 5 * 1024 * 1024, getDirectory, handleError);
+D. window.requestFileSystem(TEMPORARY, 5 * 1024 * 1024, getDirectory, handleError); X
+
+2. Which of the following allows FileWriter to append data to the end of the file?
+A. fileWriter.seek(fileWriter.length); X
+B. fileWriter.seek(fileWriter.end);
+C. fileWriter.moveLast()
+D. fileWriter.moveToEnd();
+
+3. Which of the following removes a directory that contains existing files?
+A. directoryEntry.remove(directoryRemoved, handleError);
+B. directoryEntry.removeRecursively(directoryRemoved, handleError); X
+C. directoryEntry.removeAll(directoryRemoved, handleError);
+D. directoryEntry.remove(directoryRemoved, ALL, handleError)

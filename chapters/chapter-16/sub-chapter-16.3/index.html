@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+        <title>Working with the FileSystem API</title>
+    </head>
+    <body>
+        <script>
+            (() => requestFileSystem = window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem)();
+
+            requestFileSystem(
+                'TEMPORARY',
+                5242880,
+                fileSystem => {
+                    // files or directories
+                    fileSystem.root.getFile(
+                        'hello-world.txt',
+                        { create: true },
+                        file => {
+                            file.createWriter(
+                                file => {
+                                    file.onwriteend = () => console.log('write success');
+                                    file.onerror = () => console.log('write error');
+                                    file.seek(file.length);
+                                    file.write(new Blob(['hello world'], { type: 'text/plain' }));
+                                },
+                                error => console.log(error)
+                            );
+
+                            file.file(
+                                file => {
+                                    const fileReader = new FileReader();
+                                    fileReader.onloadend = response => console.log(response);
+                                    fileReader.onerror = error => console.log(error);
+                                    fileReader.readAsText(file);
+                                },
+                                error => console.log(error)
+                            );
+
+                            file.remove(
+                                () => console.log('remove success'),
+                                () => console.log('remove error')
+                            );
+                        },
+                        error => console.log(error)
+                    );
+                },
+                error => console.log(error)
+            );
+
+
+        </script>
+    </body>
+</html>
